@@ -8,6 +8,8 @@ pylint = "*"
 
 [packages]
 django = "*"
+django-compressor = "*"
+django-libsass = "*"
 
 [requires]
 python_version = "3.8"

@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Bootstrap source SCSS
+/pythondjango/index/static/index/bootstrap
+
+# Static compiled CSS/SCSS/SASS
+/pythondjango/static_collected

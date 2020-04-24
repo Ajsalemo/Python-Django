@@ -1,13 +1,15 @@
-{% extends "base.html" %} 
-{% load static %} 
-
-{% block title %}Python - Django - Bootstrap{% endblock %} 
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block title %}Python - Django -
+Bootstrap{% endblock %} {% block content %}
 <div class="container-fluid vh-100 p-0 landing-page-background">
   <div class="row">
-    <div class="p-0">
-    </div>
+    <div class="p-0"></div>
   </div>
+  <nav
+    class="navbar fixed-bottom bg-transparent d-flex justify-content-center pb-5"
+  >
+    <button type="button" class="btn btn-secondary btn-lg">
+      <a href="{% url 'todo' %}" class="alert-link text-white">+ Add To-do</a>
+    </button>
+  </nav>
 </div>
 {% endblock %}

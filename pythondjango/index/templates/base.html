@@ -15,9 +15,7 @@
     {% endcompress %}
     <title>{% block title %}{% endblock %}</title>
   </head>
-  <body>
-    {% include "./partials/navbar.html" with todays_date=todays_date %} 
-    
+  <body>    
     {% block content %} 
     {% endblock %} 
 </html>

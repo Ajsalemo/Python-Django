@@ -1,5 +1,12 @@
-{% extends "base.html" %} {% load static %} {% block title %}Python - Django -
-Bootstrap{% endblock %} {% block content %}
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}Python - Django - Bootstrap{% endblock %} 
+
+{% block content %}
+
+{% include "../partials/navbar.html" with todays_date=todays_date %} 
+
 <div class="container-fluid vh-100 p-0 landing-page-background">
   <div class="row">
     <div class="p-0"></div>

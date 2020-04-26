@@ -11,11 +11,10 @@
     // Classes
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
     .landing-page-background {
-        background-color: $landing-page-background-color;
-        background-position: center;
-        background-image: url("../landing_background.jpg");
+    background-color: $landing-page-background-color;
+    background-position: center;
+    background-image: url("../landing_background.jpg");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,24 +24,125 @@
     // Color variables
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $todo-page-background-color: #000000d4;
+    $todo-page-background-color: #000000ea;
+    $todo-page-side-menu-color:#1e1d1d;
+    $todo-page-primary-text-color: #007bff;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Classes
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Parent class
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        .todo-page {
+            // Page background 
+            &-background {
+                background-color: $todo-page-background-color;
+            }
 
-    .todo-page-background {
-        background-color: $todo-page-background-color;
-    }
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Navbar - todo/templates/partials/todo-navbar.html
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            &-navbar {
+                flex-basis: 50%;
+                // Navbar input
+                &-input {
+                    background-color: $todo-page-background-color;
+                    width: 100% !important;
 
-    .todo-page-navbar {
-        flex-basis: 50%;
-    }
+                    &:focus {
+                        background-color: $todo-page-background-color;
+                    }
+                }
+            }
 
-    .todo-page-navbar-input {
-        background-color: $todo-page-background-color;
-        width: 100% !important;
-    }
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Slide out menu - todo/templates/partials/slide-menu.html
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            &-sidenav {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: #111;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+
+                // Close button for the slide out menu
+                &-closebtn {
+                    position: absolute;
+                    top: 0;
+                    right: 25px;
+                    font-size: 36px;
+                    margin-left: 50px;
+                }
+
+                // Open button for the slide out menu
+                &-openbtn {
+                    color: #007bff;
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                }
+
+                // Links within the slide out menu
+                a {
+                    padding: 8px 8px 8px 32px;
+                    text-decoration: none;
+                    font-size: 25px;
+                    color: #818181;
+                    display: block;
+                    transition: 0.3s;
+
+                    &:hover {
+                        color: #f1f1f1;
+                    }
+                }
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Slide out menu column - todo/templates/partials/sub-appbar.html
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            &-side-column {
+                border-right: 1px solid #fff;
+                background-color: $todo-page-side-menu-color;
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Sub-Appbar - todo/templates/partials/sub-appbar.html
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            &-sub-appbar {
+                padding: 1rem;
+
+                &-text-color {
+                    color: $todo-page-primary-text-color;
+                }
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Add task form - todo/templates/partials/add-task-form.html
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            &-add-task-form {
+                width: 100% !important;
+
+                // Form input
+                &-input {
+                    background-color: inherit;
+
+                    &:focus {
+                        background-color: inherit;
+                    }
+                }
+
+                // This is the '+' symbol within the submit button
+                &-submit-text {
+                    font-size: 1.5rem;
+                }
+            }
+        }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

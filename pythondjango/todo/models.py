@@ -1,7 +1,10 @@
+"""Database models"""
+
 from django.db import models
 
 
 class User(models.Model):
+    """User model"""
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -9,6 +12,7 @@ class User(models.Model):
 
 
 class Task(models.Model):
+    """Task model"""
     todo = models.CharField(max_length=300)
     date = models.DateField(null=True, blank=True)
     due_date = models.DateField(null=True, blank=True)

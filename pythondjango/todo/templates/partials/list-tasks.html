@@ -1,5 +1,10 @@
 {% for task in display_task %}
 <div class="col todo-page-display-tasks pl-4">
-    {{ task }}
+    {% if task.completed == True %}
+        <i class="fas fa-check-circle"></i>
+    {% else %}
+        <i class="far fa-circle"></i>
+    {% endif %}
+    {{ task.todo }}
 </div>
 {% endfor %}

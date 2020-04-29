@@ -12,7 +12,8 @@ def todo(request):
     If the form is valid, then submit it
     Else, if the method is that of GET, retrieve all Task objects in the database
     Display the normal form"""
-    display_task = Task.objects.values_list('todo', flat=True)
+    display_task = Task.objects.values('todo', 'id', 'completed')
+    print(display_task)
     if request.method == "POST":
         create_task_form = CreateTask(request.POST)
         if create_task_form.is_valid():
@@ -21,4 +22,5 @@ def todo(request):
     else:
         create_task_form = CreateTask()
     return render(request, "todo/todo.html",
-                  {"create_task_form": create_task_form, "display_task": display_task})
+                  {"create_task_form": create_task_form,
+                   "display_task": display_task})

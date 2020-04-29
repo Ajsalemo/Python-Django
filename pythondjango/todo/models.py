@@ -13,6 +13,7 @@ class User(models.Model):
 
 class Task(models.Model):
     """Task model"""
+    id = models.IntegerField(primary_key=True)
     todo = models.CharField(max_length=300)
     date = models.DateField(null=True, blank=True)
     due_date = models.DateField(null=True, blank=True)

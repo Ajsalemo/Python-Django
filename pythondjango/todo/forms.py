@@ -24,3 +24,40 @@ class CreateTask(forms.ModelForm):
                 }
             )
         }
+
+class EditTaskCompletion(forms.ModelForm):
+    """This is to edit the completion boolean field of a Task"""
+
+    class Meta:
+        model = Task
+        fields = ('completed',)
+        labels = {
+            'completed': '',
+        }
+        widgets = {
+            'completed': forms.CheckboxInput(
+                attrs={
+                    'class': 'd-none',
+                    'checked': True
+                }
+            )
+        }
+
+
+class EditTaskCompletionFalse(forms.ModelForm):
+    """This is to edit the completion boolean field of a Task"""
+
+    class Meta:
+        model = Task
+        fields = ('completed',)
+        labels = {
+            'completed': '',
+        }
+        widgets = {
+            'completed': forms.CheckboxInput(
+                attrs={
+                    'class': 'd-none',
+                    'checked': False
+                }
+            )
+        }

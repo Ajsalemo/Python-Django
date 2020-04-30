@@ -155,6 +155,17 @@
                 height: 3em;
                 color: #fff;
             }
+
+            &-list-tasks-form {
+                display: inline-flex;
+            }
+
+            &-list-tasks-submit-btn {
+                padding: 0;
+                border: none;
+                background-color: transparent;
+                color: white;
+            }
         }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

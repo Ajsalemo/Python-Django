@@ -21,5 +21,6 @@ from todo.views import todo
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
-    path('todo/', todo, name="todo")
+    path('todo/', todo, name="todo"),
+    path('todo_completion/<int:id>', todo, name="todo_complete")
 ]

@@ -2,18 +2,22 @@
 <div class="col todo-page-display-tasks pl-4">
   {% if task.completed == True %}
   <form action="{% url 'todo_complete' task.id %}" method="POST" class="todo-page-list-tasks-form">
-    {{ edit_task_form_false }} {% csrf_token %}
+    {{ edit_task_form_false }} 
+    {% csrf_token %}
     <button type="submit" class="todo-page-list-tasks-submit-btn">
       <i class="fas fa-check-circle"></i>
     </button>
   </form>
+  <s>{{ task.todo }}</s>
   {% else %}
   <form action="{% url 'todo_complete' task.id %}" method="POST" class="todo-page-list-tasks-form">
-    {{ edit_task_form }} {% csrf_token %}
+    {{ edit_task_form }} 
+    {% csrf_token %}
     <button type="submit" class="todo-page-list-tasks-submit-btn">
         <i class="far fa-circle"></i>
     </button>
   </form>
-  {% endif %} {{ task.todo }}
+  {{ task.todo }}
+  {% endif %} 
 </div>
 {% endfor %}

@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from index.views import index
-from todo.views import todo
+from todo.views import todo, update_completion_todo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
     path('todo/', todo, name="todo"),
-    path('todo_completion/<int:id>', todo, name="todo_complete")
+    path('todo/<int:pk>', update_completion_todo, name="todo_complete")
 ]

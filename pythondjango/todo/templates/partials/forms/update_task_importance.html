@@ -1,0 +1,11 @@
+<form
+  action="{% url 'todo_important' task.id %}"
+  method="POST"
+  class="todo-page-list-tasks-form"
+>
+  {{ upgrade_task_important }}
+  {% csrf_token %}
+  <button type="submit" class="todo-page-list-tasks-submit-btn">
+    <i class="far fa-star todo-page-sidenav-icons pb-3"></i>
+  </button>
+</form>

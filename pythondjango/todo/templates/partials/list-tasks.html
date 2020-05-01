@@ -1,47 +1,24 @@
 {% for task in display_task %}
 <div class="col todo-page-display-tasks pl-4 d-flex justify-content-between">
+  <!-- If a task if marked as completed, show the strikethrough and the completed icon-->
   {% if task.completed == True %}
   <div>
-    <form
-      action="{% url 'todo_complete' task.id %}"
-      method="POST"
-      class="todo-page-list-tasks-form"
-    >
-      {{ edit_task_form_false }} 
-      {% csrf_token %}
-      <button type="submit" class="todo-page-list-tasks-submit-btn">
-        <i class="fas fa-check-circle"></i>
-      </button>
-    </form>
+    {% include "../partials/forms/edit_task_form_false.html" %}
     <!-- If a task is marked as completed then display a 'strike through' -->
     <s>{{ task.todo }}</s>
   </div>
   {% else %}
-  <div>
-    <form
-      action="{% url 'todo_complete' task.id %}"
-      method="POST"
-      class="todo-page-list-tasks-form"
-    >
-      {{ edit_task_form }} 
-      {% csrf_token %}
-      <button type="submit" class="todo-page-list-tasks-submit-btn">
-        <i class="far fa-circle"></i>
-      </button>
-    </form>
-    {{ task.todo }}
-  </div>
+    <!-- If a task is not completed, do not strikethrough the text and show the uncompleted icon -->
+    <div>
+      {% include "../partials/forms/edit_task_form_true.html" %}
+      {{ task.todo }}
+    </div>
   {% endif %}
-  <form
-    action="{% url 'todo_important' task.id %}"
-    method="POST"
-    class="todo-page-list-tasks-form"
-  >
-    {{ update_task }}
-    {% csrf_token %}
-    <button type="submit" class="todo-page-list-tasks-submit-btn">
-      <i class="far fa-star todo-page-sidenav-icons pb-3"></i>
-    </button>
-  </form>
+  <!-- Conditional to check whether a task is marked as important, depending if true/false - show the appropriate icon -->
+  {% if task.important == False %}
+    {% include "../partials/forms/update_task_importance.html" %}
+  {% else %}
+    {% include "../partials/forms/downgrade_task_importance.html" %}
+  {% endif %}
 </div>
 {% endfor %}

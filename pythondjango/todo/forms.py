@@ -80,3 +80,21 @@ class UpdateTaskToImportant(forms.ModelForm):
                 }
             )
         }
+
+class DowngradeTaskImportance(forms.ModelForm):
+    """This is to downgrade a task's importance'"""
+
+    class Meta:
+        model = Task
+        fields = ('important',)
+        labels = {
+            'important': '',
+        }
+        widgets = {
+            'important': forms.CheckboxInput(
+                attrs={
+                    'class': 'd-none',
+                    'checked': False
+                }
+            )
+        }

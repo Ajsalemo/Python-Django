@@ -21,4 +21,4 @@ class Task(models.Model):
     completed = models.BooleanField(default=False, blank=True)
 
     def __str__(self):
-        return f"Added the following: {self.todo}, {self.date}, {self.important}, {self.completed}"
+        return f"Added the following: {self.todo}, {self.date}, {self.important}, {self.completed}, {self.important}"

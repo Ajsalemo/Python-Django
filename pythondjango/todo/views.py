@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import CreateTask, EditTaskCompletion, EditTaskCompletionFalse, UpdateTaskToImportant
+from .forms import CreateTask, EditTaskCompletion, EditTaskCompletionFalse, UpdateTaskToImportant, DowngradeTaskImportance
 from .models import Task
 
 
@@ -13,10 +13,11 @@ def todo(request):
     Else, if the method is that of GET, retrieve all Task objects in the database
     Display the normal form"""
 
-    display_task = Task.objects.values('todo', 'id', 'completed')
+    display_task = Task.objects.values('todo', 'id', 'completed', 'important')
     edit_task_form = EditTaskCompletion()
     edit_task_form_false = EditTaskCompletionFalse()
-    update_task = UpdateTaskToImportant()
+    upgrade_task_important = UpdateTaskToImportant()
+    downgrade_task_importance = DowngradeTaskImportance()
     print(display_task)
     if request.method == "POST":
         create_task_form = CreateTask(request.POST)
@@ -30,7 +31,8 @@ def todo(request):
                    "display_task": display_task,
                    "edit_task_form": edit_task_form,
                    "edit_task_form_false": edit_task_form_false,
-                   "update_task": update_task})
+                   "upgrade_task_important": upgrade_task_important,
+                   "downgrade_task_importance": downgrade_task_importance})
 
 
 def update_completion_todo(request, pk):
@@ -56,10 +58,18 @@ def update_completion_todo(request, pk):
 def update_task_importance(request, pk):
     """This is to update a tasks importance"""
 
-    update_task = get_object_or_404(Task, pk=pk)
-    update_task_form_true = UpdateTaskToImportant(
-        request.POST or None, instance=update_task)
+    upgrade_task_importance = get_object_or_404(Task, pk=pk)
+    upgrade_task_importance_form = UpdateTaskToImportant(
+        request.POST or None, instance=upgrade_task_importance)
+    downgrade_task_importance_form = DowngradeTaskImportance(
+        request.POST or None, instance=upgrade_task_importance)
 
-    if update_task_form_true.is_valid():
-        update_task_form_true.save()
+    if upgrade_task_importance_form.is_valid():
+        upgrade_task_importance_form.save()
         return redirect('todo')
+
+    if downgrade_task_importance_form.is_valid():
+        downgrade_task_importance_form.save()
+        return redirect('todo')
+
+    return render(request, "todo/todo.html")

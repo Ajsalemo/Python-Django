@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import CreateTask, EditTaskCompletion, EditTaskCompletionFalse
+from .forms import CreateTask, EditTaskCompletion, EditTaskCompletionFalse, UpdateTaskToImportant
 from .models import Task
 
 
@@ -16,6 +16,7 @@ def todo(request):
     display_task = Task.objects.values('todo', 'id', 'completed')
     edit_task_form = EditTaskCompletion()
     edit_task_form_false = EditTaskCompletionFalse()
+    update_task = UpdateTaskToImportant()
     print(display_task)
     if request.method == "POST":
         create_task_form = CreateTask(request.POST)
@@ -28,7 +29,8 @@ def todo(request):
                   {"create_task_form": create_task_form,
                    "display_task": display_task,
                    "edit_task_form": edit_task_form,
-                   "edit_task_form_false": edit_task_form_false})
+                   "edit_task_form_false": edit_task_form_false,
+                   "update_task": update_task})
 
 
 def update_completion_todo(request, pk):
@@ -49,3 +51,15 @@ def update_completion_todo(request, pk):
         return redirect('todo')
 
     return render(request, "todo/todo.html")
+
+
+def update_task_importance(request, pk):
+    """This is to update a tasks importance"""
+
+    update_task = get_object_or_404(Task, pk=pk)
+    update_task_form_true = UpdateTaskToImportant(
+        request.POST or None, instance=update_task)
+
+    if update_task_form_true.is_valid():
+        update_task_form_true.save()
+        return redirect('todo')

@@ -1,23 +1,47 @@
 {% for task in display_task %}
-<div class="col todo-page-display-tasks pl-4">
+<div class="col todo-page-display-tasks pl-4 d-flex justify-content-between">
   {% if task.completed == True %}
-  <form action="{% url 'todo_complete' task.id %}" method="POST" class="todo-page-list-tasks-form">
-    {{ edit_task_form_false }} 
-    {% csrf_token %}
-    <button type="submit" class="todo-page-list-tasks-submit-btn">
-      <i class="fas fa-check-circle"></i>
-    </button>
-  </form>
-  <s>{{ task.todo }}</s>
+  <div>
+    <form
+      action="{% url 'todo_complete' task.id %}"
+      method="POST"
+      class="todo-page-list-tasks-form"
+    >
+      {{ edit_task_form_false }} 
+      {% csrf_token %}
+      <button type="submit" class="todo-page-list-tasks-submit-btn">
+        <i class="fas fa-check-circle"></i>
+      </button>
+    </form>
+    <!-- If a task is marked as completed then display a 'strike through' -->
+    <s>{{ task.todo }}</s>
+  </div>
   {% else %}
-  <form action="{% url 'todo_complete' task.id %}" method="POST" class="todo-page-list-tasks-form">
-    {{ edit_task_form }} 
+  <div>
+    <form
+      action="{% url 'todo_complete' task.id %}"
+      method="POST"
+      class="todo-page-list-tasks-form"
+    >
+      {{ edit_task_form }} 
+      {% csrf_token %}
+      <button type="submit" class="todo-page-list-tasks-submit-btn">
+        <i class="far fa-circle"></i>
+      </button>
+    </form>
+    {{ task.todo }}
+  </div>
+  {% endif %}
+  <form
+    action="{% url 'todo_important' task.id %}"
+    method="POST"
+    class="todo-page-list-tasks-form"
+  >
+    {{ update_task }}
     {% csrf_token %}
     <button type="submit" class="todo-page-list-tasks-submit-btn">
-        <i class="far fa-circle"></i>
+      <i class="far fa-star todo-page-sidenav-icons pb-3"></i>
     </button>
   </form>
-  {{ task.todo }}
-  {% endif %} 
 </div>
 {% endfor %}

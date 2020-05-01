@@ -61,3 +61,22 @@ class EditTaskCompletionFalse(forms.ModelForm):
                 }
             )
         }
+
+
+class UpdateTaskToImportant(forms.ModelForm):
+    """This is to update a task to an 'important' status"""
+
+    class Meta:
+        model = Task
+        fields = ('important',)
+        labels = {
+            'important': '',
+        }
+        widgets = {
+            'important': forms.CheckboxInput(
+                attrs={
+                    'class': 'd-none',
+                    'checked': True
+                }
+            )
+        }

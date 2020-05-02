@@ -1,11 +1,8 @@
-<span class="todo-page-sidenav-openbtn pb-4" onclick="openNav()">&#9776;</span>
-<a href="{% url 'index' %}"><i class="far fa-star todo-page-sidenav-icons pb-3"></i></a>
-<a href="{% url 'todo' %}"><i class="fas fa-home todo-page-sidenav-icons"></i></a>
+<span class="todo-page-sidenav-openbtn pb-4" onclick="openNav();">&#9776;</span>
+<a href="{% url 'index' %}" title="Important tasks" class="d-flex text-white mb-2"><i class="far fa-star todo-page-sidenav-icons align-self-center"></i>
+  <span id="sideNavContentOne" class="d-none todo-page-sidenav-content">Important</span>
+</a>
+<a href="{% url 'todo' %}" title="Home" class="d-flex text-white mt-2"><i class="fas fa-home todo-page-sidenav-icons align-self-center"></i>
+  <span id="sideNavContentTwo" class="d-none todo-page-sidenav-content">Home</span>
+</a>
 
-<div id="mySidenav" class="todo-page-sidenav">
-  <a class="todo-page-sidenav-closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>

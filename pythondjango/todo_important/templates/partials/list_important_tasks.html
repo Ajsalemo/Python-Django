@@ -1,0 +1,7 @@
+<div class="col todo-page-display-tasks pl-4 d-flex justify-content-between">
+{% for important_tasks in list_all_important_tasks %}
+    {% if important_tasks.important == True %}
+        {{ important_tasks.todo }}
+    {% endif %}
+{% endfor %}
+</div>

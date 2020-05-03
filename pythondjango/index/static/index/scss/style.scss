@@ -38,10 +38,6 @@ $todo-page-primary-text-color: #007bff;
   // Page background
   &-background {
     background-color: $todo-page-background-color;
-
-    &-main-content {
-      z-index: 9999;
-    }
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,19 +67,13 @@ $todo-page-primary-text-color: #007bff;
       font-size: 1.5rem;
     }
 
-    // Links within the slide out menu
-    a {
-      padding: 8px 8px 8px 32px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #818181;
-      display: block;
-
+    &-anchor {
+      height: 1.1rem;
       &:hover {
-        color: #f1f1f1;
         text-decoration: none;
       }
     }
+
     // Fontawesome icons - side menu
     &-icons {
       color: #918c8c;

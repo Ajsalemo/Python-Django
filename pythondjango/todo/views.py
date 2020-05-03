@@ -18,7 +18,6 @@ def todo(request):
     edit_task_form_false = EditTaskCompletionFalse()
     upgrade_task_important = UpdateTaskToImportant()
     downgrade_task_importance = DowngradeTaskImportance()
-    print(display_task)
     if request.method == "POST":
         create_task_form = CreateTask(request.POST)
         if create_task_form.is_valid():

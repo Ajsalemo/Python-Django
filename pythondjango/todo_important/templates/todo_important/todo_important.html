@@ -1,0 +1,8 @@
+{% extends "todo_base.html" %} 
+{% load static %} 
+
+
+{% block todo %}
+  {% include "../partials/sub-task-bar.html" %}
+  {% include "../partials/list_important_tasks.html" %}
+{% endblock %}

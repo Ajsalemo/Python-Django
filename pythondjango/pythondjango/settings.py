@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'index',
     'todo',
+    'todo_important',
     'compressor',
 ]
 

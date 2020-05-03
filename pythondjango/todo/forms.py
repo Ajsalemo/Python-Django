@@ -1,6 +1,4 @@
-"""
-Form that creates a task
-"""
+"""Form that creates a task"""
 from django import forms
 
 from .models import Task

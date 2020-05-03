@@ -1,24 +1,24 @@
 {% for task in display_task %}
-<div class="col todo-page-display-tasks pl-4 d-flex justify-content-between">
-  <!-- If a task if marked as completed, show the strikethrough and the completed icon-->
-  {% if task.completed == True %}
-  <div>
-    {% include "../partials/forms/edit_task_form_false.html" %}
-    <!-- If a task is marked as completed then display a 'strike through' -->
-    <s>{{ task.todo }}</s>
-  </div>
-  {% else %}
-    <!-- If a task is not completed, do not strikethrough the text and show the uncompleted icon -->
+  <div class="col todo-page-display-tasks pl-4 d-flex justify-content-between">
+    <!-- If a task if marked as completed, show the strikethrough and the completed icon-->
+    {% if task.completed == True %}
     <div>
-      {% include "../partials/forms/edit_task_form_true.html" %}
-      {{ task.todo }}
+      {% include "../partials/forms/edit_task_form_false.html" %}
+      <!-- If a task is marked as completed then display a 'strike through' -->
+      <s>{{ task.todo }}</s>
     </div>
-  {% endif %}
-  <!-- Conditional to check whether a task is marked as important, depending if true/false - show the appropriate icon -->
-  {% if task.important == False %}
-    {% include "../partials/forms/update_task_importance.html" %}
-  {% else %}
-    {% include "../partials/forms/downgrade_task_importance.html" %}
-  {% endif %}
-</div>
+    {% else %}
+      <!-- If a task is not completed, do not strikethrough the text and show the uncompleted icon -->
+      <div>
+        {% include "../partials/forms/edit_task_form_true.html" %}
+        {{ task.todo }}
+      </div>
+    {% endif %}
+    <!-- Conditional to check whether a task is marked as important, depending if true/false - show the appropriate icon -->
+    {% if task.important == False %}
+      {% include "../partials/forms/update_task_importance.html" %}
+    {% else %}
+      {% include "../partials/forms/downgrade_task_importance.html" %}
+    {% endif %}
+  </div>
 {% endfor %}

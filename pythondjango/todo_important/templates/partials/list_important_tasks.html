@@ -1,7 +1,16 @@
-<div class="col todo-page-display-tasks pl-4 d-flex justify-content-between">
-{% for important_tasks in list_all_important_tasks %}
-    {% if important_tasks.important == True %}
-        {{ important_tasks.todo }}
+{% for important_task in list_all_important_tasks %}
+    {% if important_task.important == True %}
+        <div class="col todo-page-display-tasks pl-4 d-flex justify-content-between">
+            {% if important_task.completed == True %}
+            <div>
+                {{ important_task.todo }}
+            </div>
+            {% else %}
+            <div>
+                {% include "../partials/forms/complete_important_task.html" %}
+                {{ important_task.todo }}
+            </div>
+            {% endif %}
+        </div>
     {% endif %}
 {% endfor %}
-</div>

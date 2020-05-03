@@ -25,5 +25,6 @@ urlpatterns = [
     path('todo/', todo, name="todo"),
     path('todo/c/<int:pk>', update_completion_todo, name="todo_complete"),
     path('todo/i/<int:pk>', update_task_importance, name="todo_important"),
-    path('todo/i_a/', all_important_tasks, name="todo_important_all")
+    path('todo/i_a/', all_important_tasks, name="todo_important_all"),
+    path('todo/i_ac/<int:pk>', all_important_tasks, name="todo_important_complete"),
 ]

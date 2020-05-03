@@ -2,7 +2,13 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import CreateTask, EditTaskCompletion, EditTaskCompletionFalse, UpdateTaskToImportant, DowngradeTaskImportance
+from .forms import (
+    CreateTask,
+    EditTaskCompletion,
+    EditTaskCompletionFalse,
+    UpdateTaskToImportant,
+    DowngradeTaskImportance
+)
 from .models import Task
 
 

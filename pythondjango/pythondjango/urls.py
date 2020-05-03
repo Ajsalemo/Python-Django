@@ -17,7 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from index.views import index
 from todo.views import todo, update_completion_todo, update_task_importance
-from todo_important.views import all_important_tasks
+from todo_important.views import (
+    all_important_tasks,
+    update_important_tasks_completion,
+    update_task_self_importance
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +30,10 @@ urlpatterns = [
     path('todo/c/<int:pk>', update_completion_todo, name="todo_complete"),
     path('todo/i/<int:pk>', update_task_importance, name="todo_important"),
     path('todo/i_a/', all_important_tasks, name="todo_important_all"),
-    path('todo/i_ac/<int:pk>', all_important_tasks, name="todo_important_complete"),
+    path('todo/i_c/<int:pk>',
+         update_important_tasks_completion,
+         name="update_important_task_completion"),
+    path('todo/i_u/<int:pk>',
+         update_task_self_importance,
+         name="update_task_self_importance")
 ]

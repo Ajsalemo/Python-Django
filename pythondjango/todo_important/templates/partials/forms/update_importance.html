@@ -1,0 +1,11 @@
+<form
+  action="{% url 'update_task_self_importance' important_task.id %}"
+  method="POST"
+  class="todo-page-list-tasks-form"
+>
+  {{ set_task_importance_true }} 
+  {% csrf_token %}
+  <button type="submit" class="todo-page-list-tasks-submit-btn" title="Mark as important">
+    <i class="far fa-star todo-page-sidenav-icons pb-3"></i>
+  </button>
+</form>

@@ -1,15 +1,25 @@
 {% for important_task in list_all_important_tasks %}
+    <!-- Only display tasks marked as 'important' -->
     {% if important_task.important == True %}
         <div class="col todo-page-display-tasks pl-4 d-flex justify-content-between">
+            <!-- If a task is marked as completed then display a 'strike through' --> 
             {% if important_task.completed == True %}
-            <div>
-                {{ important_task.todo }}
-            </div>
+                <div>
+                    {% include "../partials/forms/uncomplete_important_tasks.html" %}
+                    <s>{{ important_task.todo }}</s>
+                </div>
             {% else %}
-            <div>
-                {% include "../partials/forms/complete_important_task.html" %}
-                {{ important_task.todo }}
-            </div>
+            <!-- If a task is not completed, do not strikethrough the text and show the uncompleted icon -->
+                <div>
+                    {% include "../partials/forms/complete_important_task.html" %}
+                    {{ important_task.todo }}
+                </div>
+            {% endif %}
+            <!-- Conditional to check whether a task is marked as important, depending if true/false - show the appropriate icon -->
+            {% if task.important == False %}
+                {% include "../partials/forms/update_importance.html" %}
+            {% else %}
+                {% include "../partials/forms/downgrade_importance.html" %}
             {% endif %}
         </div>
     {% endif %}

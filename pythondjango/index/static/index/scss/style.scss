@@ -154,6 +154,7 @@ $todo-page-primary-text-color: #007bff;
   &-display-tasks {
     height: 3em;
     color: #fff;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.137);
   }
 
   &-list-tasks-form {

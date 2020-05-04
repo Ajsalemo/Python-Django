@@ -1,7 +1,7 @@
 {% for important_task in list_all_important_tasks %}
     <!-- Only display tasks marked as 'important' -->
     {% if important_task.important == True %}
-        <div class="col todo-page-display-tasks pl-4 d-flex justify-content-between">
+        <div class="col todo-page-display-tasks pl-4 d-flex justify-content-between align-items-center">
             <!-- If a task is marked as completed then display a 'strike through' --> 
             {% if important_task.completed == True %}
                 <div>

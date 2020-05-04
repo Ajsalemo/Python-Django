@@ -15,10 +15,13 @@
       </div>
     {% endif %}
     <!-- Conditional to check whether a task is marked as important, depending if true/false - show the appropriate icon -->
-    {% if task.important == False %}
-      {% include "../partials/forms/update_task_importance.html" %}
-    {% else %}
-      {% include "../partials/forms/downgrade_task_importance.html" %}
-    {% endif %}
+    <div class="d-flex">
+      {% if task.important == False %}
+        {% include "../partials/forms/update_task_importance.html" %}
+      {% else %}
+        {% include "../partials/forms/downgrade_task_importance.html" %}
+      {% endif %}
+      {% include "../partials/dropdown.html" %}
+    </div>
   </div>
 {% endfor %}

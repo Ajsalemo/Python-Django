@@ -152,8 +152,9 @@ $todo-page-primary-text-color: #007bff;
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   &-display-tasks {
-    height: 3em;
+    height: auto;
     color: #fff;
+    word-break: break-all;
     border-bottom: 1px solid rgba(128, 128, 128, 0.137);
   }
 

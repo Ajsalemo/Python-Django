@@ -1,6 +1,6 @@
 """Form that creates a task"""
 from django import forms
-
+from bootstrap_datepicker_plus import DatePickerInput
 from .models import Task
 
 
@@ -23,6 +23,7 @@ class CreateTask(forms.ModelForm):
                 }
             )
         }
+
 
 class EditTaskCompletion(forms.ModelForm):
     """This is to edit the completion boolean field of a Task"""
@@ -80,6 +81,7 @@ class UpdateTaskToImportant(forms.ModelForm):
             )
         }
 
+
 class DowngradeTaskImportance(forms.ModelForm):
     """This is to downgrade a task's importance'"""
 
@@ -94,6 +96,25 @@ class DowngradeTaskImportance(forms.ModelForm):
                 attrs={
                     'class': 'd-none',
                     'checked': False
+                }
+            )
+        }
+
+
+class AddDueDateTodo(forms.ModelForm):
+    """This is to a due date to a task"""
+
+    class Meta:
+        model = Task
+        fields = ('due_date',)
+        labels = {
+            'due_date': '',
+        }
+        widgets = {
+            'due_date': forms.DateInput(
+                format='%d/%m/%Y',
+                attrs={
+                    'class': 'due_date'
                 }
             )
         }

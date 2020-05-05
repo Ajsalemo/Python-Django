@@ -14,9 +14,9 @@ class User(models.Model):
 class Task(models.Model):
     """Task model"""
     id = models.IntegerField(primary_key=True)
-    todo = models.CharField(max_length=300)
+    todo = models.CharField(max_length=300, blank=True)
     date = models.DateField(null=True, blank=True)
-    due_date = models.DateField(null=True, blank=True)
+    due_date = models.DateTimeField(null=True, blank=True)
     important = models.BooleanField(default=False, blank=True)
     completed = models.BooleanField(default=False, blank=True)
 

@@ -1,10 +1,11 @@
 <form
   method="POST"
-  class="todo-page-list-tasks-form justify-content-center w-100"
+  class="todo-page-list-tasks-form todo-page-add-calendar-form"
 >
+  {{ add_due_date_todo }}
   {% csrf_token %}
-  <button type="submit" class="todo-page-list-tasks-submit-btn" title="Set a date or time">
+  <button type="submit" class="todo-page-list-tasks-submit-btn d-flex justify-content-around align-items-baseline" title="Set a date or time">
     <i class="far fa-calendar-alt pb-3 text-primary"></i>
-    <span class="text-white">Add due date</span>
+    <span>Add due date</span>
   </button>
 </form>

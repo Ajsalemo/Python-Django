@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'todo',
     'todo_important',
     'compressor',
+    'bootstrap_datepicker_plus'
 ]
 
 MIDDLEWARE = [
@@ -121,6 +122,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 
 STATIC_URL = '/static/'
 

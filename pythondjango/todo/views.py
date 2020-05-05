@@ -7,7 +7,8 @@ from .forms import (
     EditTaskCompletion,
     EditTaskCompletionFalse,
     UpdateTaskToImportant,
-    DowngradeTaskImportance
+    DowngradeTaskImportance,
+    AddDueDateTodo
 )
 from .models import Task
 
@@ -24,6 +25,7 @@ def todo(request):
     edit_task_form_false = EditTaskCompletionFalse()
     upgrade_task_important = UpdateTaskToImportant()
     downgrade_task_importance = DowngradeTaskImportance()
+    add_due_date_todo = AddDueDateTodo()
     if request.method == "POST":
         create_task_form = CreateTask(request.POST)
         if create_task_form.is_valid():
@@ -37,7 +39,8 @@ def todo(request):
                    "edit_task_form": edit_task_form,
                    "edit_task_form_false": edit_task_form_false,
                    "upgrade_task_important": upgrade_task_important,
-                   "downgrade_task_importance": downgrade_task_importance})
+                   "downgrade_task_importance": downgrade_task_importance,
+                   "add_due_date_todo": add_due_date_todo})
 
 
 def update_completion_todo(request, pk):

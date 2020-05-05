@@ -156,6 +156,9 @@ $todo-page-primary-text-color: #007bff;
     color: #fff;
     word-break: break-all;
     border-bottom: 1px solid rgba(128, 128, 128, 0.137);
+    &:hover {
+      background-color: #1e1d1d;
+    }
   }
 
   &-list-tasks-form {
@@ -163,10 +166,19 @@ $todo-page-primary-text-color: #007bff;
   }
 
   &-list-tasks-submit-btn {
-    padding: 0;
+    padding-right: 0 0.5rem 0 0;
     border: none;
     background-color: transparent;
     color: white;
+  }
+
+   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Dropdown menu - todo_important/partials/dropdown.html  
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  &-dropdown-menu {
+    background-color: #1e1d1d;
+    border: 1px solid rgba(128, 128, 128, 0.452);
   }
 }
 

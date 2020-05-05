@@ -6,9 +6,10 @@
     aria-haspopup="true"
     aria-expanded="false"
   >
-    <i class="fas fa-ellipsis-v"></i>
+    <i class="fas fa-ellipsis-v todo-page-sidenav-icons"></i>
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <!-- Placeholder -->
+  <div class="dropdown-menu todo-page-dropdown-menu rounded-0" aria-labelledby="dropdownMenu2">
+    {% include "../partials/forms/add_calendar_date.html" %}
+    {% include "../partials/forms/delete_todo.html" %}
   </div>
 </div>

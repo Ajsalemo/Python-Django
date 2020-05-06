@@ -16,7 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from index.views import index
-from todo.views import todo, update_completion_todo, update_task_importance, add_todo_date
+from todo.views import (
+    todo,
+    update_completion_todo,
+    update_task_importance,
+    add_todo_date,
+    delete_task
+)
 from todo_important.views import (
     all_important_tasks,
     update_important_tasks_completion,
@@ -36,5 +42,6 @@ urlpatterns = [
     path('todo/i_u/<int:pk>',
          update_task_self_importance,
          name="update_task_self_importance"),
-    path('todo/task_date/<int:pk>', add_todo_date, name="add_todo_date")
+    path('todo/task_date/<int:pk>', add_todo_date, name="add_todo_date"),
+    path('todo/del_task/<int:pk>', delete_task, name="delete_task"),
 ]

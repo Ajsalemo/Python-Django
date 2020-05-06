@@ -1,15 +1,10 @@
 """Views file for the 'todo' dashboard"""
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import (
-    CreateTask,
-    EditTaskCompletion,
-    EditTaskCompletionFalse,
-    UpdateTaskToImportant,
-    DowngradeTaskImportance,
-    AddDueDateTodo
-)
+from .forms import (AddDueDateTodo, CreateTask, DeleteTask,
+                    DowngradeTaskImportance, EditTaskCompletion,
+                    EditTaskCompletionFalse, UpdateTaskToImportant)
 from .models import Task
 
 
@@ -20,12 +15,14 @@ def todo(request):
     Else, if the method is that of GET, retrieve all Task objects in the database
     Display the normal form"""
 
-    display_task = Task.objects.values('todo', 'id', 'completed', 'important', 'due_date')
+    display_task = Task.objects.values(
+        'todo', 'id', 'completed', 'important', 'due_date')
     edit_task_form = EditTaskCompletion()
     edit_task_form_false = EditTaskCompletionFalse()
     upgrade_task_important = UpdateTaskToImportant()
     downgrade_task_importance = DowngradeTaskImportance()
     add_due_date_todo = AddDueDateTodo()
+    delete_general_task = DeleteTask()
     if request.method == "POST":
         create_task_form = CreateTask(request.POST)
         if create_task_form.is_valid():
@@ -40,7 +37,8 @@ def todo(request):
                    "edit_task_form_false": edit_task_form_false,
                    "upgrade_task_important": upgrade_task_important,
                    "downgrade_task_importance": downgrade_task_importance,
-                   "add_due_date_todo": add_due_date_todo})
+                   "add_due_date_todo": add_due_date_todo,
+                   "delete_general_task": delete_general_task})
 
 
 def update_completion_todo(request, pk):
@@ -92,6 +90,20 @@ def add_todo_date(request, pk):
 
     if set_todo_date_form.is_valid():
         set_todo_date_form.save()
+        return redirect('todo')
+
+    return render(request, "todo/todo.html")
+
+
+def delete_task(request, pk):
+    """This is to delete a task"""
+
+    delete_general_task = get_object_or_404(Task, pk=pk)
+    delete_general_task_form = DeleteTask(
+        request.POST or None, instance=delete_general_task)
+
+    if delete_general_task_form.is_valid():
+        delete_general_task.delete()
         return redirect('todo')
 
     return render(request, "todo/todo.html")

@@ -123,3 +123,11 @@ class AddDueDateTodo(forms.ModelForm):
                 }
             )
         }
+
+
+class DeleteTask(forms.ModelForm):
+    """This is to delete a task"""
+
+    class Meta:
+        model = Task
+        fields = []

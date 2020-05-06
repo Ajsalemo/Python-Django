@@ -20,7 +20,7 @@ def todo(request):
     Else, if the method is that of GET, retrieve all Task objects in the database
     Display the normal form"""
 
-    display_task = Task.objects.values('todo', 'id', 'completed', 'important')
+    display_task = Task.objects.values('todo', 'id', 'completed', 'important', 'due_date')
     edit_task_form = EditTaskCompletion()
     edit_task_form_false = EditTaskCompletionFalse()
     upgrade_task_important = UpdateTaskToImportant()
@@ -78,6 +78,20 @@ def update_task_importance(request, pk):
 
     if downgrade_task_importance_form.is_valid():
         downgrade_task_importance_form.save()
+        return redirect('todo')
+
+    return render(request, "todo/todo.html")
+
+
+def add_todo_date(request, pk):
+    """This is to a set a date for a task"""
+
+    set_todo_date = get_object_or_404(Task, pk=pk)
+    set_todo_date_form = AddDueDateTodo(
+        request.POST or None, instance=set_todo_date)
+
+    if set_todo_date_form.is_valid():
+        set_todo_date_form.save()
         return redirect('todo')
 
     return render(request, "todo/todo.html")

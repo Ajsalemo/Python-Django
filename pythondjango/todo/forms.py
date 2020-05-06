@@ -1,6 +1,5 @@
 """Form that creates a task"""
 from django import forms
-from bootstrap_datepicker_plus import DatePickerInput
 from .models import Task
 
 
@@ -19,7 +18,8 @@ class CreateTask(forms.ModelForm):
                     'class': """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0""",
                     'type': 'search',
-                    'placeholder': 'Add a task'
+                    'placeholder': 'Add a task',
+                    'id': id
                 }
             )
         }
@@ -38,7 +38,8 @@ class EditTaskCompletion(forms.ModelForm):
             'completed': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': True
+                    'checked': True,
+                    'id': id
                 }
             )
         }
@@ -57,7 +58,8 @@ class EditTaskCompletionFalse(forms.ModelForm):
             'completed': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': False
+                    'checked': False,
+                    'id': id
                 }
             )
         }
@@ -76,7 +78,8 @@ class UpdateTaskToImportant(forms.ModelForm):
             'important': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': True
+                    'checked': True,
+                    'id': id
                 }
             )
         }
@@ -95,7 +98,8 @@ class DowngradeTaskImportance(forms.ModelForm):
             'important': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': False
+                    'checked': False,
+                    'id': id
                 }
             )
         }
@@ -114,7 +118,8 @@ class AddDueDateTodo(forms.ModelForm):
             'due_date': forms.DateInput(
                 format='%d/%m/%Y',
                 attrs={
-                    'class': 'due_date'
+                    'class': 'due_date',
+                    'id': id
                 }
             )
         }

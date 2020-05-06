@@ -6,12 +6,18 @@
       {% include "../partials/forms/edit_task_form_false.html" %}
       <!-- If a task is marked as completed then display a 'strike through' -->
       <s>{{ task.todo }}</s>
+      {% if task.due_date %}
+        <span class="d-flex pl-4 todo-page-sidenav-icons"><small>{{ task.due_date }}</small></span>
+      {% endif %}
     </div>
     {% else %}
       <!-- If a task is not completed, do not strikethrough the text and show the uncompleted icon -->
       <div>
         {% include "../partials/forms/edit_task_form_true.html" %}
         {{ task.todo }}
+        {% if task.due_date %}
+          <span class="d-flex pl-4 todo-page-sidenav-icons"><small>{{ task.due_date }}</small></span>
+        {% endif %}
       </div>
     {% endif %}
     <!-- Conditional to check whether a task is marked as important, depending if true/false - show the appropriate icon -->

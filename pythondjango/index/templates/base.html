@@ -37,11 +37,13 @@
 
     <script>
       $(document).ready(function() {
-            $(".due_date").datepicker({
-                dateFormat: 'yy-mm-dd',
-                changeMonth: true,
-                changeYear: true
+            $('.due_date').each(function() {
+                $(this).datepicker({
+                  dateFormat: 'yy-mm-dd',
+                  changeMonth: true,
+                  changeYear: true
+              });
             });
-        });
+        })
     </script>
 </html>

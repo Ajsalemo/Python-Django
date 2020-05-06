@@ -1,6 +1,7 @@
 <form
   method="POST"
   class="todo-page-list-tasks-form todo-page-add-calendar-form"
+  action="{% url 'add_todo_date' task.id %}"
 >
   {{ add_due_date_todo }}
   {% csrf_token %}

@@ -26,7 +26,8 @@ class CreateImportantTask(forms.ModelForm):
             'important': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': True
+                    'checked': True,
+                    'id': id
                 }
             )
         }
@@ -46,13 +47,15 @@ class CompleteImportantTask(forms.ModelForm):
             'completed': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': True
+                    'checked': True,
+                    'id': id
                 }
             ),
             'important': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': True
+                    'checked': True,
+                    'id': id
                 }
             )
         }
@@ -72,13 +75,15 @@ class UncompleteImportantTask(forms.ModelForm):
             'completed': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': False
+                    'checked': False,
+                    'id': id
                 }
             ),
             'important': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': True
+                    'checked': True,
+                    'id': id
                 }
             )
         }
@@ -97,7 +102,8 @@ class UpdateImportantTask(forms.ModelForm):
             'important': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': True
+                    'checked': True,
+                    'id': id
                 }
             )
         }
@@ -116,7 +122,8 @@ class DowngradeTaskFromImportant(forms.ModelForm):
             'important': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
-                    'checked': False
+                    'checked': False,
+                    'id': id
                 }
             )
         }

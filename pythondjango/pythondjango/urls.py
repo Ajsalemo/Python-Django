@@ -26,7 +26,8 @@ from todo.views import (
 from todo_important.views import (
     all_important_tasks,
     update_important_tasks_completion,
-    update_task_self_importance
+    update_task_self_importance,
+    add_todo_date_important
 )
 
 urlpatterns = [
@@ -44,4 +45,5 @@ urlpatterns = [
          name="update_task_self_importance"),
     path('todo/task_date/<int:pk>', add_todo_date, name="add_todo_date"),
     path('todo/del_task/<int:pk>', delete_task, name="delete_task"),
+    path('todo/task_date_imp/<int:pk>', add_todo_date_important, name="add_todo_date_imp"),
 ]

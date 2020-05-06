@@ -7,7 +7,12 @@
       <!-- If a task is marked as completed then display a 'strike through' -->
       <s>{{ task.todo }}</s>
       {% if task.due_date %}
-        <span class="d-flex pl-4 todo-page-sidenav-icons"><small>{{ task.due_date }}</small></span>
+        <span class="d-flex pl-4 todo-page-sidenav-icons">
+          <small>
+            <i class="far fa-calendar-alt"></i>
+            {{ task.due_date }}
+          </small>
+        </span>
       {% endif %}
     </div>
     {% else %}
@@ -16,7 +21,12 @@
         {% include "../partials/forms/edit_task_form_true.html" %}
         {{ task.todo }}
         {% if task.due_date %}
-          <span class="d-flex pl-4 todo-page-sidenav-icons"><small>{{ task.due_date }}</small></span>
+          <span class="d-flex pl-4 todo-page-sidenav-icons">
+            <small>
+              <i class="far fa-calendar-alt"></i>
+              {{ task.due_date }}
+            </small>
+          </span>
         {% endif %}
       </div>
     {% endif %}

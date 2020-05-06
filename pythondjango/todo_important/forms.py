@@ -127,3 +127,31 @@ class DowngradeTaskFromImportant(forms.ModelForm):
                 }
             )
         }
+
+
+class AddDueDateTodoImportant(forms.ModelForm):
+    """This is to a due date to a task"""
+
+    class Meta:
+        model = Task
+        fields = ('due_date', 'important')
+        labels = {
+            'due_date': '',
+            'important': ''
+        }
+        widgets = {
+            'due_date': forms.DateInput(
+                format='%d/%m/%Y',
+                attrs={
+                    'class': 'due_date',
+                    'id': id
+                }
+            ),
+            'important': forms.CheckboxInput(
+                attrs={
+                    'class': 'd-none',
+                    'checked': True,
+                    'id': id
+                }
+            )
+        }

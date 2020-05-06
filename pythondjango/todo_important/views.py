@@ -6,7 +6,8 @@ from .forms import (
     CompleteImportantTask,
     UncompleteImportantTask,
     UpdateImportantTask,
-    DowngradeTaskFromImportant
+    DowngradeTaskFromImportant,
+    AddDueDateTodoImportant
 )
 
 
@@ -17,6 +18,7 @@ def all_important_tasks(request):
     complete_important_task_form_false = UncompleteImportantTask()
     set_task_importance_true = UpdateImportantTask()
     set_task_importance_false = DowngradeTaskFromImportant()
+    add_important_task_due_date = AddDueDateTodoImportant()
     if request.method == "POST":
         create_important_task_form = CreateImportantTask(request.POST)
         if create_important_task_form.is_valid():
@@ -30,7 +32,8 @@ def all_important_tasks(request):
                    "complete_important_task_form_true": complete_important_task_form_true,
                    "complete_important_task_form_false": complete_important_task_form_false,
                    "set_task_importance_true": set_task_importance_true,
-                   "set_task_importance_false": set_task_importance_false})
+                   "set_task_importance_false": set_task_importance_false,
+                   "add_important_task_due_date": add_important_task_due_date })
 
 
 def update_important_tasks_completion(request, pk):
@@ -71,3 +74,17 @@ def update_task_self_importance(request, pk):
         return redirect("todo_important_all")
 
     return render(request, "todo_important/todo_important.html")
+
+
+def add_todo_date_important(request, pk):
+    """This is to a set a date for a task"""
+
+    set_todo_date_imp = get_object_or_404(Task, pk=pk)
+    set_todo_date_imp_form = AddDueDateTodoImportant(
+        request.POST or None, instance=set_todo_date_imp)
+
+    if set_todo_date_imp_form.is_valid():
+        set_todo_date_imp_form.save()
+        return redirect('todo_important_all')
+
+    return render(request, "todo_important_all/todo_important_all.html")

@@ -7,20 +7,39 @@
                 <div>
                     {% include "../partials/forms/uncomplete_important_tasks.html" %}
                     <s>{{ important_task.todo }}</s>
+                    {% if important_task.due_date %}
+                        <span class="d-flex pl-4 todo-page-sidenav-icons">
+                            <small>
+                                <i class="far fa-calendar-alt"></i>
+                                {{ important_task.due_date }}
+                            </small>
+                        </span>
+                    {% endif %}
                 </div>
             {% else %}
             <!-- If a task is not completed, do not strikethrough the text and show the uncompleted icon -->
                 <div>
                     {% include "../partials/forms/complete_important_task.html" %}
                     {{ important_task.todo }}
+                    {% if important_task.due_date %}
+                        <span class="d-flex pl-4 todo-page-sidenav-icons">
+                            <small>
+                                <i class="far fa-calendar-alt"></i>
+                                {{ important_task.due_date }}
+                            </small>
+                        </span>
+                    {% endif %}
                 </div>
             {% endif %}
             <!-- Conditional to check whether a task is marked as important, depending if true/false - show the appropriate icon -->
-            {% if task.important == False %}
-                {% include "../partials/forms/update_importance.html" %}
-            {% else %}
-                {% include "../partials/forms/downgrade_importance.html" %}
-            {% endif %}
+            <div class="d-flex">
+                {% if task.important == False %}
+                    {% include "../partials/forms/update_importance.html" %}
+                {% else %}
+                    {% include "../partials/forms/downgrade_importance.html" %}
+                {% endif %}
+                {% include "../partials/dropdown_imp.html" %}
+            </div>
         </div>
     {% endif %}
 {% endfor %}

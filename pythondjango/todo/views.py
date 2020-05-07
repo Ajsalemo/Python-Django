@@ -23,6 +23,7 @@ def todo(request):
     downgrade_task_importance = DowngradeTaskImportance()
     add_due_date_todo = AddDueDateTodo()
     delete_general_task = DeleteTask()
+    find_important_task_count = Task.objects.filter(important="True").count()
     if request.method == "POST":
         create_task_form = CreateTask(request.POST)
         if create_task_form.is_valid():
@@ -38,7 +39,8 @@ def todo(request):
                    "upgrade_task_important": upgrade_task_important,
                    "downgrade_task_importance": downgrade_task_importance,
                    "add_due_date_todo": add_due_date_todo,
-                   "delete_general_task": delete_general_task})
+                   "delete_general_task": delete_general_task,
+                   "find_important_task_count": find_important_task_count})
 
 
 def update_completion_todo(request, pk):

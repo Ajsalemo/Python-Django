@@ -20,6 +20,7 @@ def all_important_tasks(request):
     set_task_importance_true = UpdateImportantTask()
     set_task_importance_false = DowngradeTaskFromImportant()
     add_important_task_due_date = AddDueDateTodoImportant()
+    find_important_task_count = Task.objects.filter(important="True").count()
     delete_imp_task_form = DeleteTask()
     if request.method == "POST":
         create_important_task_form = CreateImportantTask(request.POST)
@@ -36,7 +37,8 @@ def all_important_tasks(request):
                    "set_task_importance_true": set_task_importance_true,
                    "set_task_importance_false": set_task_importance_false,
                    "add_important_task_due_date": add_important_task_due_date,
-                   "delete_imp_task_form": delete_imp_task_form})
+                   "delete_imp_task_form": delete_imp_task_form,
+                   "find_important_task_count": find_important_task_count})
 
 
 def update_important_tasks_completion(request, pk):

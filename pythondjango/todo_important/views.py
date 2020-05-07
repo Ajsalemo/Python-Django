@@ -1,6 +1,8 @@
 """This view is for tasks listed as important"""
 from django.shortcuts import render, redirect, get_object_or_404
 from todo.models import Task
+from todo.forms import DeleteTask
+
 from .forms import (
     CreateImportantTask,
     CompleteImportantTask,
@@ -10,7 +12,6 @@ from .forms import (
     AddDueDateTodoImportant
 )
 
-
 def all_important_tasks(request):
     """This renders all important tasks in its own pane"""
     list_all_important_tasks = Task.objects.all()
@@ -19,6 +20,7 @@ def all_important_tasks(request):
     set_task_importance_true = UpdateImportantTask()
     set_task_importance_false = DowngradeTaskFromImportant()
     add_important_task_due_date = AddDueDateTodoImportant()
+    delete_imp_task_form = DeleteTask()
     if request.method == "POST":
         create_important_task_form = CreateImportantTask(request.POST)
         if create_important_task_form.is_valid():
@@ -33,7 +35,8 @@ def all_important_tasks(request):
                    "complete_important_task_form_false": complete_important_task_form_false,
                    "set_task_importance_true": set_task_importance_true,
                    "set_task_importance_false": set_task_importance_false,
-                   "add_important_task_due_date": add_important_task_due_date })
+                   "add_important_task_due_date": add_important_task_due_date,
+                   "delete_imp_task_form": delete_imp_task_form})
 
 
 def update_important_tasks_completion(request, pk):
@@ -85,6 +88,20 @@ def add_todo_date_important(request, pk):
 
     if set_todo_date_imp_form.is_valid():
         set_todo_date_imp_form.save()
+        return redirect('todo_important_all')
+
+    return render(request, "todo_important_all/todo_important_all.html")
+
+
+def delete_important_task(request, pk):
+    """This is to delete a task"""
+
+    delete_imp_task = get_object_or_404(Task, pk=pk)
+    delete_imp_task_form = DeleteTask(
+        request.POST or None, instance=delete_imp_task)
+
+    if delete_imp_task_form.is_valid():
+        delete_imp_task.delete()
         return redirect('todo_important_all')
 
     return render(request, "todo_important_all/todo_important_all.html")

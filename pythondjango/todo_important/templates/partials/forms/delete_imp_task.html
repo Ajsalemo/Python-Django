@@ -1,0 +1,12 @@
+<form
+  method="POST"
+  class="todo-page-list-tasks-form border-top border-danger justify-content-center w-100"
+  action="{% url 'delete_important_task' important_task.id %}"
+>
+  {{ delete_imp_task_form }}
+  {% csrf_token %}
+  <button type="submit" class="todo-page-list-tasks-submit-btn pt-2 text-danger" title="Delete Task">
+    <i class="far fa-trash-alt"></i>
+    <span>Delete</span>
+  </button>
+</form>

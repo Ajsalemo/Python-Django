@@ -1,0 +1,16 @@
+<!-- If a task has a due date, then display it under the task description -->
+{% if task.due_date %}
+    <span class="d-flex pl-4 todo-page-sidenav-icons">
+        {% if task.due_date < todays_datetime %}
+        <small class="text-danger">
+            <i class="far fa-calendar-alt"></i>
+            {{ task.due_date }}
+        </small>
+        {% else %}
+        <small>
+            <i class="far fa-calendar-alt"></i>
+            {{ task.due_date }}
+        </small>
+        {% endif %}
+    </span>    
+{% endif %}

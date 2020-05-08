@@ -1,7 +1,6 @@
 """Views file for the 'todo' dashboard"""
-
+from datetime import datetime
 from django.shortcuts import get_object_or_404, redirect, render
-
 from .forms import (AddDueDateTodo, CreateTask, DeleteTask,
                     DowngradeTaskImportance, EditTaskCompletion,
                     EditTaskCompletionFalse, UpdateTaskToImportant)
@@ -15,6 +14,7 @@ def todo(request):
     Else, if the method is that of GET, retrieve all Task objects in the database
     Display the normal form"""
 
+    todays_datetime = datetime.now()
     display_task = Task.objects.values(
         'todo', 'id', 'completed', 'important', 'due_date')
     edit_task_form = EditTaskCompletion()
@@ -40,7 +40,8 @@ def todo(request):
                    "downgrade_task_importance": downgrade_task_importance,
                    "add_due_date_todo": add_due_date_todo,
                    "delete_general_task": delete_general_task,
-                   "find_important_task_count": find_important_task_count})
+                   "find_important_task_count": find_important_task_count,
+                   "todays_datetime": todays_datetime})
 
 
 def update_completion_todo(request, pk):

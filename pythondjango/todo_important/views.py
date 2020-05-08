@@ -1,4 +1,5 @@
 """This view is for tasks listed as important"""
+from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from todo.models import Task
 from todo.forms import DeleteTask
@@ -14,6 +15,7 @@ from .forms import (
 
 def all_important_tasks(request):
     """This renders all important tasks in its own pane"""
+    todays_imp_datetime = datetime.now()
     list_all_important_tasks = Task.objects.all()
     complete_important_task_form_true = CompleteImportantTask()
     complete_important_task_form_false = UncompleteImportantTask()
@@ -38,7 +40,8 @@ def all_important_tasks(request):
                    "set_task_importance_false": set_task_importance_false,
                    "add_important_task_due_date": add_important_task_due_date,
                    "delete_imp_task_form": delete_imp_task_form,
-                   "find_important_task_count": find_important_task_count})
+                   "find_important_task_count": find_important_task_count,
+                   "todays_imp_datetime": todays_imp_datetime})
 
 
 def update_important_tasks_completion(request, pk):

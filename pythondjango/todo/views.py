@@ -1,6 +1,8 @@
 """Views file for the 'todo' dashboard"""
 from datetime import datetime
+
 from django.shortcuts import get_object_or_404, redirect, render
+
 from .forms import (AddDueDateTodo, CreateTask, DeleteTask,
                     DowngradeTaskImportance, EditTaskCompletion,
                     EditTaskCompletionFalse, UpdateTaskToImportant)
@@ -8,15 +10,13 @@ from .models import Task
 
 
 def todo(request):
-    """Function for the 'todo' view - this does the following:
-    If a request method is that of POST, pass the POST request to the Model form
-    If the form is valid, then submit it
-    Else, if the method is that of GET, retrieve all Task objects in the database
-    Display the normal form"""
+    """view for the general tasks dashboard"""
 
     todays_datetime = datetime.now()
+    print(todays_datetime)
     display_task = Task.objects.values(
         'todo', 'id', 'completed', 'important', 'due_date')
+    print(display_task)
     edit_task_form = EditTaskCompletion()
     edit_task_form_false = EditTaskCompletionFalse()
     upgrade_task_important = UpdateTaskToImportant()

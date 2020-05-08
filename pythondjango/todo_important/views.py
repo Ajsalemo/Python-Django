@@ -48,7 +48,7 @@ def update_important_tasks_completion(request, pk):
     """This view is to complete an important task"""
 
     update_important_task_completion = get_object_or_404(Task, pk=pk)
-    complete_important_task_form_true = CreateImportantTask(
+    complete_important_task_form_true = CompleteImportantTask(
         request.POST or None, instance=update_important_task_completion)
     complete_important_task_form_false = UncompleteImportantTask(
         request.POST or None, instance=update_important_task_completion)

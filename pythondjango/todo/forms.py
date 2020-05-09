@@ -1,5 +1,6 @@
 """Form that creates a task"""
 from django import forms
+
 from .models import Task
 
 
@@ -116,7 +117,6 @@ class AddDueDateTodo(forms.ModelForm):
         }
         widgets = {
             'due_date': forms.DateInput(
-                format='%d/%m/%Y',
                 attrs={
                     'class': 'due_date',
                     'id': id

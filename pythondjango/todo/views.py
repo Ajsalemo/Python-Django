@@ -1,5 +1,5 @@
 """Views file for the 'todo' dashboard"""
-from datetime import datetime
+from datetime import date
 
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -12,11 +12,12 @@ from .models import Task
 def todo(request):
     """view for the general tasks dashboard"""
 
-    todays_datetime = datetime.now()
+    todays_datetime = date.today()
     print(todays_datetime)
+    d_date = Task.objects.values('due_date')
+    print(d_date)
     display_task = Task.objects.values(
         'todo', 'id', 'completed', 'important', 'due_date')
-    print(display_task)
     edit_task_form = EditTaskCompletion()
     edit_task_form_false = EditTaskCompletionFalse()
     upgrade_task_important = UpdateTaskToImportant()

@@ -24,13 +24,10 @@ def all_important_tasks(request):
     add_important_task_due_date = AddDueDateTodoImportant()
     find_important_task_count = Task.objects.filter(important="True").count()
     delete_imp_task_form = DeleteTask()
-    if request.method == "POST":
-        create_important_task_form = CreateImportantTask(request.POST)
-        if create_important_task_form.is_valid():
-            create_important_task_form.save()
-            return redirect("todo_important_all")
-    else:
-        create_important_task_form = CreateImportantTask()
+    create_important_task_form = CreateImportantTask(request.POST or None)
+    if create_important_task_form.is_valid():
+        create_important_task_form.save()
+        return redirect("todo_important_all")
     return render(request, "todo_important/todo_important.html",
                   {"list_all_important_tasks": list_all_important_tasks,
                    "create_important_task_form": create_important_task_form,

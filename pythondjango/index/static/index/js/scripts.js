@@ -1,4 +1,3 @@
-
 // Toggle option for a slide-out menu
 const openNav = () => {
   // If the slide out column is open, and the 'menu' button is clicked again to close it, then shorten the bootstrap column width to minimize it
@@ -21,3 +20,8 @@ const openNav = () => {
       "d-block todo-page-sidenav-content pl-1";
   }
 };
+
+const validateFormSubmit = e => console.log(e)
+
+
+

@@ -13,9 +13,6 @@ def todo(request):
     """view for the general tasks dashboard"""
 
     todays_datetime = date.today()
-    print(todays_datetime)
-    d_date = Task.objects.values('due_date')
-    print(d_date)
     display_task = Task.objects.values(
         'todo', 'id', 'completed', 'important', 'due_date')
     edit_task_form = EditTaskCompletion()
@@ -25,13 +22,10 @@ def todo(request):
     add_due_date_todo = AddDueDateTodo()
     delete_general_task = DeleteTask()
     find_important_task_count = Task.objects.filter(important="True").count()
-    if request.method == "POST":
-        create_task_form = CreateTask(request.POST)
-        if create_task_form.is_valid():
-            create_task_form.save()
-            return redirect('todo')
-    else:
-        create_task_form = CreateTask()
+    create_task_form = CreateTask(request.POST or None)
+    if create_task_form.is_valid():
+        create_task_form.save()
+        return redirect('todo')
     return render(request, "todo/todo.html",
                   {"create_task_form": create_task_form,
                    "display_task": display_task,

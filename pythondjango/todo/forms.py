@@ -20,7 +20,7 @@ class CreateTask(forms.ModelForm):
                                 border-top-0 border-right-0 border-left-0""",
                     'type': 'search',
                     'placeholder': 'Add a task',
-                    'id': id
+                    'id': 'create-task-form'
                 }
             )
         }

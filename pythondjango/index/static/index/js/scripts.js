@@ -6,8 +6,10 @@ const openNav = () => {
       "col-2 col-sm-1 col-md-1 col-lg-1 todo-page-side-column d-flex flex-column";
     // This line adds classes to the menu content to hide the text upon closing
     // This still lets the font-awesome icons show unpon minimizing
-    document.getElementById("sideNavContentOne").className = "d-none todo-page-sidenav-content";
-    document.getElementById("sideNavContentTwo").className = "d-none todo-page-sidenav-content";
+    document.getElementById("sideNavContentOne").className =
+      "d-none todo-page-sidenav-content";
+    document.getElementById("sideNavContentTwo").className =
+      "d-none todo-page-sidenav-content";
   } else {
     // If the menu is closed and the 'menu' icon is clicked - this will add the 'active' class to it
     // The boostrap column classes are increased numerically to maximize the side nav
@@ -21,7 +23,14 @@ const openNav = () => {
   }
 };
 
-const validateFormSubmit = e => console.log(e)
-
-
-
+// This checks if the 'Task' form field is empty
+// If it's empty, set stylistic changes to indicate there is a validation error
+const validateTaskFormSubmit = () => {
+  if ((document.getElementById("create-task-form").value === "")) {
+    document.getElementById("task-form-error").innerHTML = "You must enter a value";
+    document.getElementById("task-form-error").style.color = "red";
+    document.getElementById("create-task-form").style.border = "1px solid red";
+    return false;
+  }
+  document.getElementById("task-form-error").innerHTML = "";
+};

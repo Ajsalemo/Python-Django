@@ -2,7 +2,7 @@
 <a href="{% url 'todo_important_all' %}" title="Important tasks" class="d-flex text-white pb-2 todo-page-sidenav-anchor"><i class="far fa-star todo-page-sidenav-icons align-self-center"></i>
   <span id="sideNavContentOne" class="d-none todo-page-sidenav-content">Important
     {% if find_important_task_count > 0 %}
-      <span class="pl-2">({{ find_important_task_count }})</span>
+      <span class="pl-1">({{ find_important_task_count }})</span>
     {% endif %}
   </span>
 </a>

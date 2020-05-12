@@ -23,14 +23,33 @@ const openNav = () => {
   }
 };
 
+// TODO - Need to see if it's possible to make this more DRY, since the forms are on two different pages
+
 // This checks if the 'Task' form field is empty
 // If it's empty, set stylistic changes to indicate there is a validation error
 const validateTaskFormSubmit = () => {
+  console.log(document.getElementById("create-task-form").value)
   if ((document.getElementById("create-task-form").value === "")) {
     document.getElementById("task-form-error").innerHTML = "You must enter a value";
     document.getElementById("task-form-error").style.color = "red";
     document.getElementById("create-task-form").style.border = "1px solid red";
     return false;
+  } else if ((document.getElementById("create-task-form").value !== "")) {
+    console.log('loading')
   }
   document.getElementById("task-form-error").innerHTML = "";
 };
+
+// This checks if the 'Important Task' form field is empty
+// If it's empty, set stylistic changes to indicate there is a validation error
+const validateImportantTaskFormSubmit = () => {
+  if ((document.getElementById("create-important-task-form").value === "")) {
+    document.getElementById("important-task-form-error").innerHTML = "You must enter a value";
+    document.getElementById("important-task-form-error").style.color = "red";
+    document.getElementById("create-important-task-form").style.border = "1px solid red";
+    return false;
+  } else if ((document.getElementById("create-important-task-form").value !== "")) {
+    console.log('loading')
+  }
+  document.getElementById("important-task-form-error").innerHTML = "";
+}

@@ -20,14 +20,14 @@ class CreateImportantTask(forms.ModelForm):
                     'class': """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0""",
                     'type': 'search',
-                    'placeholder': 'Add a task'
+                    'placeholder': 'Add a task',
+                    'id': "create-important-task-form"
                 }
             ),
             'important': forms.CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': True,
-                    'id': id
                 }
             )
         }

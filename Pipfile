@@ -11,6 +11,8 @@ autopep8 = "*"
 django = "*"
 django-compressor = "*"
 django-libsass = "*"
+pylint-django = "*"
+django-bootstrap-datepicker-plus = "*"
 
 [requires]
 python_version = "3.8"

@@ -23,7 +23,7 @@ const openNav = () => {
   // If the slide out column is open, and the 'menu' button is clicked again to close it, then shorten the bootstrap column width to minimize it
   if (mySideNav.classList.contains("active")) {
     mySideNav.classList.remove(
-      "col-4",
+      "col-5",
       "col-sm-3",
       "col-md-2",
       "col-lg-2",
@@ -36,8 +36,9 @@ const openNav = () => {
   } else {
     // If the menu is closed and the 'menu' icon is clicked - this will add the 'active' class to it
     // The boostrap column classes are increased numerically to maximize the side nav
+    mySideNav.classList.remove("col-2", "col-sm-1", "col-md-1", "col-lg-1");
     mySideNav.classList.add(
-      "col-4",
+      "col-5",
       "col-sm-3",
       "col-md-2",
       "col-lg-2",

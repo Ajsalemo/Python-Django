@@ -1,10 +1,9 @@
 """Forms that update or create important tasks"""
-from django import forms
-
+from django.forms import ModelForm, TextInput, CheckboxInput, DateInput
 from todo.models import Task
 
 
-class CreateImportantTask(forms.ModelForm):
+class CreateImportantTask(ModelForm):
     """This form creates a task marked as important"""
 
     class Meta:
@@ -15,7 +14,7 @@ class CreateImportantTask(forms.ModelForm):
             'important': '',
         }
         widgets = {
-            'todo': forms.TextInput(
+            'todo': TextInput(
                 attrs={
                     'class': """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0""",
@@ -24,7 +23,7 @@ class CreateImportantTask(forms.ModelForm):
                     'id': "create-important-task-form"
                 }
             ),
-            'important': forms.CheckboxInput(
+            'important': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': True,
@@ -33,7 +32,7 @@ class CreateImportantTask(forms.ModelForm):
         }
 
 
-class CompleteImportantTask(forms.ModelForm):
+class CompleteImportantTask(ModelForm):
     """This form completes an important task"""
 
     class Meta:
@@ -44,14 +43,14 @@ class CompleteImportantTask(forms.ModelForm):
             'important': '',
         }
         widgets = {
-            'completed': forms.CheckboxInput(
+            'completed': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': True,
                     'id': id
                 }
             ),
-            'important': forms.CheckboxInput(
+            'important': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': True,
@@ -61,7 +60,7 @@ class CompleteImportantTask(forms.ModelForm):
         }
 
 
-class UncompleteImportantTask(forms.ModelForm):
+class UncompleteImportantTask(ModelForm):
     """This form marks an important task as uncomplete"""
 
     class Meta:
@@ -72,14 +71,14 @@ class UncompleteImportantTask(forms.ModelForm):
             'important': '',
         }
         widgets = {
-            'completed': forms.CheckboxInput(
+            'completed': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': False,
                     'id': id
                 }
             ),
-            'important': forms.CheckboxInput(
+            'important': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': True,
@@ -89,7 +88,7 @@ class UncompleteImportantTask(forms.ModelForm):
         }
 
 
-class UpdateImportantTask(forms.ModelForm):
+class UpdateImportantTask(ModelForm):
     """This is to update a task to an 'important' status"""
 
     class Meta:
@@ -99,7 +98,7 @@ class UpdateImportantTask(forms.ModelForm):
             'important': '',
         }
         widgets = {
-            'important': forms.CheckboxInput(
+            'important': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': True,
@@ -109,7 +108,7 @@ class UpdateImportantTask(forms.ModelForm):
         }
 
 
-class DowngradeTaskFromImportant(forms.ModelForm):
+class DowngradeTaskFromImportant(ModelForm):
     """This is to downgrade a task's importance'"""
 
     class Meta:
@@ -119,7 +118,7 @@ class DowngradeTaskFromImportant(forms.ModelForm):
             'important': '',
         }
         widgets = {
-            'important': forms.CheckboxInput(
+            'important': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': False,
@@ -129,7 +128,7 @@ class DowngradeTaskFromImportant(forms.ModelForm):
         }
 
 
-class AddDueDateTodoImportant(forms.ModelForm):
+class AddDueDateTodoImportant(ModelForm):
     """This is to a due date to a task"""
 
     class Meta:
@@ -140,14 +139,14 @@ class AddDueDateTodoImportant(forms.ModelForm):
             'important': ''
         }
         widgets = {
-            'due_date': forms.DateInput(
+            'due_date': DateInput(
                 format='%d/%m/%Y',
                 attrs={
                     'class': 'due_date',
                     'id': id
                 }
             ),
-            'important': forms.CheckboxInput(
+            'important': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': True,

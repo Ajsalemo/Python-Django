@@ -1,10 +1,11 @@
 """Form that creates a task"""
-from django import forms
-
+from datetime import date
+from django.forms import ModelForm, TextInput, CheckboxInput, DateInput
+from django.core.exceptions import ValidationError
 from .models import Task
 
 
-class CreateTask(forms.ModelForm):
+class CreateTask(ModelForm):
     """This form is solely for creating tasks"""
 
     class Meta:
@@ -14,7 +15,7 @@ class CreateTask(forms.ModelForm):
             'todo': '',
         }
         widgets = {
-            'todo': forms.TextInput(
+            'todo': TextInput(
                 attrs={
                     'class': """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0""",
@@ -26,7 +27,7 @@ class CreateTask(forms.ModelForm):
         }
 
 
-class EditTaskCompletion(forms.ModelForm):
+class EditTaskCompletion(ModelForm):
     """This is to edit the completion boolean field of a Task"""
 
     class Meta:
@@ -36,7 +37,7 @@ class EditTaskCompletion(forms.ModelForm):
             'completed': '',
         }
         widgets = {
-            'completed': forms.CheckboxInput(
+            'completed': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': True,
@@ -46,7 +47,7 @@ class EditTaskCompletion(forms.ModelForm):
         }
 
 
-class EditTaskCompletionFalse(forms.ModelForm):
+class EditTaskCompletionFalse(ModelForm):
     """This is to edit the completion boolean field of a Task"""
 
     class Meta:
@@ -56,7 +57,7 @@ class EditTaskCompletionFalse(forms.ModelForm):
             'completed': '',
         }
         widgets = {
-            'completed': forms.CheckboxInput(
+            'completed': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': False,
@@ -66,7 +67,7 @@ class EditTaskCompletionFalse(forms.ModelForm):
         }
 
 
-class UpdateTaskToImportant(forms.ModelForm):
+class UpdateTaskToImportant(ModelForm):
     """This is to update a task to an 'important' status"""
 
     class Meta:
@@ -76,7 +77,7 @@ class UpdateTaskToImportant(forms.ModelForm):
             'important': '',
         }
         widgets = {
-            'important': forms.CheckboxInput(
+            'important': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': True,
@@ -86,7 +87,7 @@ class UpdateTaskToImportant(forms.ModelForm):
         }
 
 
-class DowngradeTaskImportance(forms.ModelForm):
+class DowngradeTaskImportance(ModelForm):
     """This is to downgrade a task's importance'"""
 
     class Meta:
@@ -96,7 +97,7 @@ class DowngradeTaskImportance(forms.ModelForm):
             'important': '',
         }
         widgets = {
-            'important': forms.CheckboxInput(
+            'important': CheckboxInput(
                 attrs={
                     'class': 'd-none',
                     'checked': False,
@@ -106,7 +107,7 @@ class DowngradeTaskImportance(forms.ModelForm):
         }
 
 
-class AddDueDateTodo(forms.ModelForm):
+class AddDueDateTodo(ModelForm):
     """This is to a due date to a task"""
 
     class Meta:
@@ -116,7 +117,7 @@ class AddDueDateTodo(forms.ModelForm):
             'due_date': '',
         }
         widgets = {
-            'due_date': forms.DateInput(
+            'due_date': DateInput(
                 attrs={
                     'class': 'due_date',
                     'id': id
@@ -125,7 +126,17 @@ class AddDueDateTodo(forms.ModelForm):
         }
 
 
-class DeleteTask(forms.ModelForm):
+    def clean_due_date(self):
+        """This prevents a past date from being entered for a Task due date"""
+        due_date = self.cleaned_data.get("due_date")
+        if due_date is None:
+            pass
+        elif due_date < date.today():
+            raise ValidationError("Meetings cannot be in the past")
+        return due_date
+
+
+class DeleteTask(ModelForm):
     """This is to delete a task"""
 
     class Meta:

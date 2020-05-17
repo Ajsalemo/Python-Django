@@ -39,9 +39,10 @@
       $(document).ready(function() {
             $('.due_date').each(function() {
                 $(this).datepicker({
-                  dateFormat: 'yy-mm-dd',
+                  dateFormat: 'mm/dd/yy',
                   changeMonth: true,
-                  changeYear: true
+                  changeYear: true,
+                  minDate: 0
               });
             });
         })

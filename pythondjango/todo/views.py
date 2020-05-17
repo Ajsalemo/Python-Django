@@ -14,7 +14,7 @@ def todo(request):
 
     todays_datetime = date.today()
     display_task = Task.objects.values(
-        'todo', 'id', 'completed', 'important', 'due_date')
+        "todo", "id", "completed", "important", "due_date")
     edit_task_form = EditTaskCompletion()
     edit_task_form_false = EditTaskCompletionFalse()
     upgrade_task_important = UpdateTaskToImportant()
@@ -25,7 +25,7 @@ def todo(request):
     create_task_form = CreateTask(request.POST or None)
     if create_task_form.is_valid():
         create_task_form.save()
-        return redirect('todo')
+        return redirect("todo")
     return render(request, "todo/todo.html",
                   {"create_task_form": create_task_form,
                    "display_task": display_task,
@@ -50,11 +50,11 @@ def update_completion_todo(request, pk):
 
     if update_completion_form_true.is_valid():
         update_completion_form_true.save()
-        return redirect('todo')
+        return redirect("todo")
 
     if update_completion_form_false.is_valid():
         update_completion_form_false.save()
-        return redirect('todo')
+        return redirect("todo")
 
     return render(request, "todo/todo.html")
 
@@ -70,11 +70,11 @@ def update_task_importance(request, pk):
 
     if upgrade_task_importance_form.is_valid():
         upgrade_task_importance_form.save()
-        return redirect('todo')
+        return redirect("todo")
 
     if downgrade_task_importance_form.is_valid():
         downgrade_task_importance_form.save()
-        return redirect('todo')
+        return redirect("todo")
 
     return render(request, "todo/todo.html")
 
@@ -88,7 +88,9 @@ def add_todo_date(request, pk):
 
     if set_todo_date_form.is_valid():
         set_todo_date_form.save()
-        return redirect('todo')
+        return redirect("todo")
+    else:
+        return redirect("todo")
 
     return render(request, "todo/todo.html")
 
@@ -102,6 +104,6 @@ def delete_task(request, pk):
 
     if delete_general_task_form.is_valid():
         delete_general_task.delete()
-        return redirect('todo')
+        return redirect("todo")
 
     return render(request, "todo/todo.html")

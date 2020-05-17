@@ -17,6 +17,7 @@ urlpatterns = [
     path('update/<int:pk>',
          update_task_self_importance,
          name="update_task_self_importance"),
-    path('add_due_date/<int:pk>', add_todo_date_important, name="add_todo_date_imp"),
+    path('add_due_date/<int:pk>', add_todo_date_important,
+         name="add_todo_date_imp"),
     path('delete/<int:pk>', delete_important_task, name="delete_important_task"),
 ]

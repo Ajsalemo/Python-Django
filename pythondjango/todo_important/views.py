@@ -13,6 +13,7 @@ from .forms import (
     AddDueDateTodoImportant
 )
 
+
 def all_important_tasks(request):
     """This renders all important tasks in its own pane"""
     todays_datetime_imp = date.today()

@@ -1,7 +1,6 @@
 """Form that creates a task"""
 from datetime import date
-from django.forms import ModelForm, TextInput, CheckboxInput, DateInput
-from django.core.exceptions import ValidationError
+from django.forms import ModelForm, TextInput, CheckboxInput, DateInput, ValidationError
 from .models import Task
 
 
@@ -124,7 +123,6 @@ class AddDueDateTodo(ModelForm):
                 }
             )
         }
-
 
     def clean_due_date(self):
         """This prevents a past date from being entered for a Task due date"""

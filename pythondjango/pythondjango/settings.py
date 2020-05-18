@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'index',
     'todo',
     'todo_important',
+    'users',
     'compressor',
     'bootstrap_datepicker_plus'
 ]

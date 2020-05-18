@@ -1,5 +1,6 @@
 """Forms that update or create important tasks"""
-from django.forms import ModelForm, TextInput, CheckboxInput, DateInput
+from django.forms import CheckboxInput, DateInput, ModelForm, TextInput
+
 from todo.models import Task
 
 
@@ -8,25 +9,25 @@ class CreateImportantTask(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('todo', 'important')
+        fields = ("todo", "important")
         labels = {
-            'todo': '',
-            'important': '',
+            "todo": "",
+            "important": "",
         }
         widgets = {
-            'todo': TextInput(
+            "todo": TextInput(
                 attrs={
-                    'class': """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
+                    "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0""",
-                    'type': 'search',
-                    'placeholder': 'Add a task',
-                    'id': "create-important-task-form"
+                    "type": "search",
+                    "placeholder": "Add a task",
+                    "id": "create-important-task-form"
                 }
             ),
-            'important': CheckboxInput(
+            "important": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': True,
+                    "class": "d-none",
+                    "checked": True,
                 }
             )
         }
@@ -37,24 +38,24 @@ class CompleteImportantTask(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('completed', 'important')
+        fields = ("completed", "important")
         labels = {
-            'completed': '',
-            'important': '',
+            "completed": "",
+            "important": "",
         }
         widgets = {
-            'completed': CheckboxInput(
+            "completed": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': True,
-                    'id': id
+                    "class": "d-none",
+                    "checked": True,
+                    "id": id
                 }
             ),
-            'important': CheckboxInput(
+            "important": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': True,
-                    'id': id
+                    "class": "d-none",
+                    "checked": True,
+                    "id": id
                 }
             )
         }
@@ -65,24 +66,24 @@ class UncompleteImportantTask(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('completed', 'important')
+        fields = ("completed", "important")
         labels = {
-            'completed': '',
-            'important': '',
+            "completed": "",
+            "important": "",
         }
         widgets = {
-            'completed': CheckboxInput(
+            "completed": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': False,
-                    'id': id
+                    "class": "d-none",
+                    "checked": False,
+                    "id": id
                 }
             ),
-            'important': CheckboxInput(
+            "important": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': True,
-                    'id': id
+                    "class": "d-none",
+                    "checked": True,
+                    "id": id
                 }
             )
         }
@@ -93,36 +94,36 @@ class UpdateImportantTask(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('important',)
+        fields = ("important",)
         labels = {
-            'important': '',
+            "important": "",
         }
         widgets = {
-            'important': CheckboxInput(
+            "important": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': True,
-                    'id': id
+                    "class": "d-none",
+                    "checked": True,
+                    "id": id
                 }
             )
         }
 
 
 class DowngradeTaskFromImportant(ModelForm):
-    """This is to downgrade a task's importance'"""
+    """This is to downgrade a task's importance"""
 
     class Meta:
         model = Task
-        fields = ('important',)
+        fields = ("important",)
         labels = {
-            'important': '',
+            "important": "",
         }
         widgets = {
-            'important': CheckboxInput(
+            "important": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': False,
-                    'id': id
+                    "class": "d-none",
+                    "checked": False,
+                    "id": id
                 }
             )
         }
@@ -133,24 +134,24 @@ class AddDueDateTodoImportant(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('due_date', 'important')
+        fields = ("due_date", "important")
         labels = {
-            'due_date': '',
-            'important': ''
+            "due_date": "",
+            "important": ""
         }
         widgets = {
-            'due_date': DateInput(
-                format='%d/%m/%Y',
+            "due_date": DateInput(
+                format="%d/%m/%Y",
                 attrs={
-                    'class': 'due_date',
-                    'id': id
+                    "class": "due_date",
+                    "id": id
                 }
             ),
-            'important': CheckboxInput(
+            "important": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': True,
-                    'id': id
+                    "class": "d-none",
+                    "checked": True,
+                    "id": id
                 }
             )
         }

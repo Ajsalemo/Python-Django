@@ -1,0 +1,9 @@
+<form
+  method="POST"
+>
+  {{ userCreationForm }}
+  {% csrf_token %}
+  <button type="submit">
+      Register
+  </button>
+</form>

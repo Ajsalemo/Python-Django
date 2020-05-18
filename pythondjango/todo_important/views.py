@@ -91,7 +91,7 @@ def add_todo_date_important(request, pk):
 
     if set_todo_date_imp_form.is_valid():
         set_todo_date_imp_form.save()
-        return redirect('todo_important_all')
+        return redirect("todo_important_all")
 
     return render(request, "todo_important_all/todo_important_all.html")
 
@@ -105,6 +105,6 @@ def delete_important_task(request, pk):
 
     if delete_imp_task_form.is_valid():
         delete_imp_task.delete()
-        return redirect('todo_important_all')
+        return redirect("todo_important_all")
 
     return render(request, "todo_important_all/todo_important_all.html")

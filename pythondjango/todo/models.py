@@ -2,14 +2,6 @@
 from django.db import models
 
 
-class User(models.Model):
-    """User model"""
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return f"User: {self.name}"
-
-
 class Task(models.Model):
     """Task model"""
     id = models.IntegerField(primary_key=True)

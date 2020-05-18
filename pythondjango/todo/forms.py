@@ -1,4 +1,4 @@
-"""Form that creates a task"""
+"""Form that creates, edits, or updates a task"""
 from datetime import date
 from django.forms import ModelForm, TextInput, CheckboxInput, DateInput, ValidationError
 from .models import Task
@@ -9,18 +9,18 @@ class CreateTask(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('todo',)
+        fields = ("todo",)
         labels = {
-            'todo': '',
+            "todo": "",
         }
         widgets = {
-            'todo': TextInput(
+            "todo": TextInput(
                 attrs={
-                    'class': """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
+                    "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0""",
-                    'type': 'search',
-                    'placeholder': 'Add a task',
-                    'id': 'create-task-form'
+                    "type": "search",
+                    "placeholder": "Add a task",
+                    "id": "create-task-form"
                 }
             )
         }
@@ -31,16 +31,16 @@ class EditTaskCompletion(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('completed',)
+        fields = ("completed",)
         labels = {
-            'completed': '',
+            "completed": "",
         }
         widgets = {
-            'completed': CheckboxInput(
+            "completed": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': True,
-                    'id': id
+                    "class": "d-none",
+                    "checked": True,
+                    "id": id
                 }
             )
         }
@@ -51,56 +51,56 @@ class EditTaskCompletionFalse(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('completed',)
+        fields = ("completed",)
         labels = {
-            'completed': '',
+            "completed": "",
         }
         widgets = {
-            'completed': CheckboxInput(
+            "completed": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': False,
-                    'id': id
+                    "class": "d-none",
+                    "checked": False,
+                    "id": id
                 }
             )
         }
 
 
 class UpdateTaskToImportant(ModelForm):
-    """This is to update a task to an 'important' status"""
+    """This is to update a task to an "important" status"""
 
     class Meta:
         model = Task
-        fields = ('important',)
+        fields = ("important",)
         labels = {
-            'important': '',
+            "important": "",
         }
         widgets = {
-            'important': CheckboxInput(
+            "important": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': True,
-                    'id': id
+                    "class": "d-none",
+                    "checked": True,
+                    "id": id
                 }
             )
         }
 
 
 class DowngradeTaskImportance(ModelForm):
-    """This is to downgrade a task's importance'"""
+    """This is to downgrade a task's importance"""
 
     class Meta:
         model = Task
-        fields = ('important',)
+        fields = ("important",)
         labels = {
-            'important': '',
+            "important": "",
         }
         widgets = {
-            'important': CheckboxInput(
+            "important": CheckboxInput(
                 attrs={
-                    'class': 'd-none',
-                    'checked': False,
-                    'id': id
+                    "class": "d-none",
+                    "checked": False,
+                    "id": id
                 }
             )
         }
@@ -111,15 +111,15 @@ class AddDueDateTodo(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('due_date',)
+        fields = ("due_date",)
         labels = {
-            'due_date': '',
+            "due_date": "",
         }
         widgets = {
-            'due_date': DateInput(
+            "due_date": DateInput(
                 attrs={
-                    'class': 'due_date',
-                    'id': id
+                    "class": "due_date",
+                    "id": id
                 }
             )
         }

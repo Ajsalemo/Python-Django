@@ -7,15 +7,20 @@
 
 {% include "../partials/navbar.html" with todays_date=todays_date %} 
 
-<div class="container-fluid vh-100 p-0 landing-page-background">
+<div class="container-fluid users-background text-center d-flex flex-column justify-content-center">
   <div class="row">
     <div class="p-0"></div>
   </div>
   <nav
-    class="navbar fixed-bottom bg-transparent d-flex justify-content-center pb-5"
+    class="navbar fixed-bottom bg-transparent d-flex justify-content-center pb-5 flex-column"
   >
+    {% include "../partials/welcome.html" %}
+
+    <button type="button" class="btn btn-secondary btn-lg mb-1">
+      <a href="{% url "todo" %}" class="alert-link text-white">+ Add To-do</a>
+    </button>
     <button type="button" class="btn btn-secondary btn-lg">
-      <a href="{% url 'todo' %}" class="alert-link text-white">+ Add To-do</a>
+      <a href="{% url "register" %}" class="alert-link text-white">Register</a>
     </button>
   </nav>
 </div>

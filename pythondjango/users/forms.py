@@ -1,14 +1,22 @@
 """Forms for the User page"""
-from django.forms import ModelForm, TextInput
 from django.contrib.auth.forms import UserCreationForm
-from .
+from django.forms import CharField, EmailField
+from .models import User
 
-class UserCreationForm(UserCreationForm):
-    username = TextInput
+
+class UserCreateForm(UserCreationForm):
+    """Form that creates a user"""
+    username = CharField(max_length=50, min_length=2)
+    email = EmailField()
+    password1 = CharField(max_length=50, min_length=6)
+    password2 = CharField(max_length=50, min_length=6)
 
     class meta:
-        fields = ("username", "email", "password1", "password2")
+        """Form that creates a user"""
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
         help_texts = {
             'username': None,
-            'email': None,
+            'password1': None,
+            'password2': None,
         }

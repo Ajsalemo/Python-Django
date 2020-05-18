@@ -10,28 +10,28 @@ class UserCreateForm(UserCreationForm):
     username = CharField(max_length=50, min_length=2, label="", widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4 
-                                text-center text-white""",
+                                text-white""",
         "placeholder": "Username",
     }))
 
     email = EmailField(label="", widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4 
-                                text-center text-white""",
+                                text-white""",
         "placeholder": "Email"
     }))
 
     password1 = CharField(label="", max_length=50, min_length=6, widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4 
-                                text-center text-white""",
+                                text-white""",
         "placeholder": "Password"
     }))
 
     password2 = CharField(label="", max_length=50, min_length=6, widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
-                                text-center text-white""",
+                                text-white""",
         "placeholder": "Confirm Password"
     }))
 

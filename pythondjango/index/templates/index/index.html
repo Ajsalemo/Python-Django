@@ -5,23 +5,19 @@
 
 {% block content %}
 
-{% include "../partials/navbar.html" with todays_date=todays_date %} 
+{% include "./partials/navbar.html" with todays_date=todays_date %} 
 
-<div class="container-fluid users-background text-center d-flex flex-column justify-content-center">
+<div class="container-fluid users-background d-flex justify-content-center">
   <div class="row">
-    <div class="p-0"></div>
+    <div class="col text-center d-flex flex-column justify-content-center">
+      {% include "./welcome.html" %}
+      <button type="button" class="btn btn-secondary btn mb-1">
+        <a href="{% url "todo" %}" class="alert-link text-white">+ Add To-do</a>
+      </button>
+      <button type="button" class="btn btn-secondary btn">
+        <a href="{% url "register" %}" class="alert-link text-white">Register</a>
+      </button>
+    </div>
   </div>
-  <nav
-    class="navbar fixed-bottom bg-transparent d-flex justify-content-center pb-5 flex-column"
-  >
-    {% include "./welcome.html" %}
-
-    <button type="button" class="btn btn-secondary btn-lg mb-1">
-      <a href="{% url "todo" %}" class="alert-link text-white">+ Add To-do</a>
-    </button>
-    <button type="button" class="btn btn-secondary btn-lg">
-      <a href="{% url "register" %}" class="alert-link text-white">Register</a>
-    </button>
-  </nav>
 </div>
 {% endblock %}

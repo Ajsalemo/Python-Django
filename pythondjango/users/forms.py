@@ -25,14 +25,16 @@ class UserCreateForm(UserCreationForm):
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4 
                                 text-white""",
-        "placeholder": "Password"
+        "placeholder": "Password",
+        "type": "password"
     }))
 
     password2 = CharField(label="", max_length=50, min_length=6, widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
-        "placeholder": "Confirm Password"
+        "placeholder": "Confirm Password",
+        "type": "password"
     }))
 
     class meta:

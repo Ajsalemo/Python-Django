@@ -9,21 +9,36 @@ class UserCreateForm(UserCreationForm):
     """Form that creates a user"""
     username = CharField(max_length=50, min_length=2, label="", widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
-                                border-top-0 border-right-0 border-left-0 mb-4 
+                                border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
         "placeholder": "Username",
     }))
 
+    first_name = CharField(max_length=50, min_length=2, label="", widget=TextInput(attrs={
+        "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
+                                border-top-0 border-right-0 border-left-0 mb-4
+                                text-white""",
+        "placeholder": "First Name",
+    }))
+
+    last_name = CharField(max_length=50, min_length=2, label="", widget=TextInput(attrs={
+        "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
+                                border-top-0 border-right-0 border-left-0 mb-4
+                                text-white""",
+        "placeholder": "Last Name",
+    }))
+
     email = EmailField(label="", widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
-                                border-top-0 border-right-0 border-left-0 mb-4 
+                                border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
-        "placeholder": "Email"
+        "placeholder": "Email",
+        "type": "email"
     }))
 
     password1 = CharField(label="", max_length=50, min_length=6, widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
-                                border-top-0 border-right-0 border-left-0 mb-4 
+                                border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
         "placeholder": "Password",
         "type": "password"
@@ -40,9 +55,19 @@ class UserCreateForm(UserCreationForm):
     class meta:
         """Form that creates a user"""
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "first_name", "last_name", "password1", "password2", "email")
         help_texts = {
             "username": None,
             "password1": None,
             "password2": None,
         }
+
+    # Override the save function of the UserCreateForm to add custom fields to the User model
+    def save(self, commit=True):
+        user = super(UserCreateForm, self).save(commit=False)
+        user.first_name = self.cleaned_data["first_name"]
+        user.last_name = self.cleaned_data["last_name"]
+        user.email = self.cleaned_data["email"]
+        if commit:
+            user.save()
+        return user

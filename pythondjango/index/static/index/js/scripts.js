@@ -5,6 +5,8 @@ const sideNavContentTwo = document.getElementById("sideNavContentTwo");
 const taskButtonAdd = document.getElementById("task-button-add");
 const createTaskForm = document.getElementById("create-task-form");
 const taskFormError = document.getElementById("task-form-error");
+const signUpTaskFormError = document.getElementById("signup-task-form-error");
+const signUpFormUsername = document.getElementById("id_username");
 const createImportantTaskForm = document.getElementById(
   "create-important-task-form"
 );
@@ -99,3 +101,4 @@ const validateImportantTaskFormSubmit = () => {
   }
   createImportantTaskFormError.innerHTML = "";
 };
+

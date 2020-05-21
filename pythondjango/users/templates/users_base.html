@@ -5,11 +5,10 @@
 
 {% block content %}
 {% include "index/partials/navbar.html" %}
-<div class="container-fluid users-background text-center d-flex flex-column justify-content-center">
+<div class="container-fluid users-background text-center d-flex flex-column justify-content-center pb-4">
     {% include "index/welcome.html" %}
     {% block users %}
     {% endblock %}
-    <span class="text-white">Already have an account? <a href="#">Sign in</a></span>
 </div>
 {% endblock %}
 

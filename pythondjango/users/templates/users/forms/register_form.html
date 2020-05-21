@@ -1,9 +1,11 @@
 <div class="col-lg-6 mx-auto">
-  <form method="POST" class="d-flex flex-column text-white">
+  <span id="signup-task-form-error"></span>
+  <form method="POST" class="d-flex flex-column text-white pb-3">
     {{ userCreationForm }}
     {% csrf_token %}
     <button type="submit" class="mt-4 btn btn-primary w-25 mx-auto rounded-0">
       Register
     </button>
   </form>
+  <span class="text-white">Already have an account? <a href="{% url "login" %}">Sign in</a></span>
 </div>

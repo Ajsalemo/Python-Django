@@ -1,6 +1,6 @@
 """Forms for the User page"""
-from django.contrib.auth.forms import UserCreationForm
-from django.forms import CharField, EmailField, TextInput
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.forms import CharField, EmailField, PasswordInput, TextInput
 
 from .models import User
 
@@ -36,7 +36,7 @@ class UserCreateForm(UserCreationForm):
         "type": "email"
     }))
 
-    password1 = CharField(label="", max_length=50, min_length=6, widget=TextInput(attrs={
+    password1 = CharField(label="", max_length=50, min_length=6, widget=PasswordInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
@@ -44,7 +44,7 @@ class UserCreateForm(UserCreationForm):
         "type": "password"
     }))
 
-    password2 = CharField(label="", max_length=50, min_length=6, widget=TextInput(attrs={
+    password2 = CharField(label="", max_length=50, min_length=6, widget=PasswordInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
@@ -55,7 +55,8 @@ class UserCreateForm(UserCreationForm):
     class meta:
         """Form that creates a user"""
         model = User
-        fields = ("username", "first_name", "last_name", "password1", "password2", "email")
+        fields = ("username", "first_name", "last_name",
+                  "password1", "password2", "email")
         help_texts = {
             "username": None,
             "password1": None,
@@ -71,3 +72,26 @@ class UserCreateForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class UserLoginForm(AuthenticationForm):
+    """Custom User login form"""
+
+    def __init__(self, *args, **kwargs):
+        super(UserLoginForm, self).__init__(*args, **kwargs)
+
+    username = CharField(widget=TextInput(
+        attrs={
+            "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
+                                border-top-0 border-right-0 border-left-0 mb-4
+                                text-white""",
+            "placeholder": "Username"
+        }))
+
+    password = CharField(widget=PasswordInput(
+        attrs={
+            "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
+                                border-top-0 border-right-0 border-left-0 mb-4
+                                text-white""",
+            "placeholder": "Password",
+        }))

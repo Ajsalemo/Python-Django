@@ -8,6 +8,7 @@ from .forms import (AddDueDateTodo, CreateTask, DeleteTask,
                     EditTaskCompletionFalse, UpdateTaskToImportant)
 from .models import Task
 
+
 @login_required
 def todo(request):
     """view for the general tasks dashboard"""
@@ -45,6 +46,7 @@ def todo(request):
                    "todays_datetime": todays_datetime,
                    "first_and_last_initial": first_and_last_initial})
 
+
 @login_required
 def update_completion_todo(request, pk):
     """This view is to update the added task - this marks it as complete or incomplete"""
@@ -64,6 +66,7 @@ def update_completion_todo(request, pk):
         return redirect("todo")
 
     return render(request, "todo/todo.html")
+
 
 @login_required
 def update_task_importance(request, pk):
@@ -85,6 +88,7 @@ def update_task_importance(request, pk):
 
     return render(request, "todo/todo.html")
 
+
 @login_required
 def add_todo_date(request, pk):
     """This is to a set a date for a task"""
@@ -100,6 +104,7 @@ def add_todo_date(request, pk):
         return redirect("todo")
 
     return render(request, "todo/todo.html")
+
 
 @login_required
 def delete_task(request, pk):

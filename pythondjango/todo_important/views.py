@@ -1,5 +1,6 @@
 """This view is for tasks listed as important"""
 from datetime import date
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from todo.models import Task
 from todo.forms import DeleteTask
@@ -14,6 +15,7 @@ from .forms import (
 )
 
 
+@login_required
 def all_important_tasks(request):
     """This renders all important tasks in its own pane"""
     todays_datetime_imp = date.today()
@@ -42,6 +44,7 @@ def all_important_tasks(request):
                    "todays_datetime_imp": todays_datetime_imp})
 
 
+@login_required
 def update_important_tasks_completion(request, pk):
     """This view is to complete an important task"""
 
@@ -62,6 +65,7 @@ def update_important_tasks_completion(request, pk):
     return render(request, "todo_important/todo_important.html")
 
 
+@login_required
 def update_task_self_importance(request, pk):
     """This view is to update a tasks importance"""
 
@@ -82,6 +86,7 @@ def update_task_self_importance(request, pk):
     return render(request, "todo_important/todo_important.html")
 
 
+@login_required
 def add_todo_date_important(request, pk):
     """This is to a set a date for a task"""
 
@@ -96,6 +101,7 @@ def add_todo_date_important(request, pk):
     return render(request, "todo_important_all/todo_important_all.html")
 
 
+@login_required
 def delete_important_task(request, pk):
     """This is to delete a task"""
 

@@ -9,6 +9,22 @@
     />
   </form>
   {% if user.is_authenticated %}
-    <div class="rounded-circle todo-page-navbar-avatar d-flex flex-column justify-content-center text-center">{{ first_and_last_initial }}</div>
+  <div class="dropleft">
+    <button
+      class="rounded-circle todo-page-navbar-avatar d-flex flex-column justify-content-center text-center border-0"
+      type="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      {{ first_and_last_initial }}
+    </button>
+    <div
+      class="dropdown-menu todo-page-dropdown-menu rounded-0"
+      aria-labelledby="dropdownMenu2"
+    >
+      <span class="text-white">Log out</span>
+    </div>
+  </div>
   {% endif %}
 </nav>

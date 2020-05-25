@@ -12,6 +12,12 @@ from .models import Task
 def todo(request):
     """view for the general tasks dashboard"""
 
+    # Concatenate the first letter of the users 'first name' and 'last name'
+    # to create text that can overlay the user's avatar
+    first_name_char = request.user.first_name[0].capitalize()
+    last_name_char = request.user.last_name[0].capitalize()
+    first_and_last_initial = f"{first_name_char}{last_name_char}"
+
     todays_datetime = date.today()
     display_task = Task.objects.values(
         "todo", "id", "completed", "important", "due_date")
@@ -36,7 +42,8 @@ def todo(request):
                    "add_due_date_todo": add_due_date_todo,
                    "delete_general_task": delete_general_task,
                    "find_important_task_count": find_important_task_count,
-                   "todays_datetime": todays_datetime})
+                   "todays_datetime": todays_datetime,
+                   "first_and_last_initial": first_and_last_initial})
 
 
 def update_completion_todo(request, pk):

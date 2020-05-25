@@ -8,4 +8,7 @@
       aria-label="Search"
     />
   </form>
+  {% if user.is_authenticated %}
+    <div class="rounded-circle todo-page-navbar-avatar d-flex flex-column justify-content-center text-center">{{ first_and_last_initial }}</div>
+  {% endif %}
 </nav>

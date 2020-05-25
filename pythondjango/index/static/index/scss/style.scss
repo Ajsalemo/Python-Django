@@ -70,6 +70,12 @@ $todo-page-primary-text-color: #007bff;
         background-color: $todo-page-background-color;
       }
     }
+
+    &-avatar {
+      height: 32px;
+      width: 32px;
+      background-color: #fff;
+    }
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

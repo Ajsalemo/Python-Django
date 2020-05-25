@@ -10,7 +10,7 @@ def register(request):
     userCreationForm = UserCreateForm(request.POST or None)
     if userCreationForm.is_valid():
         username = userCreationForm.cleaned_data.get("username")
-        messages.success(request, f"Welcome to your dashboard, {username}")
+        messages.success(request, f"Welcome, {username}. Please log in to continue.")
         userCreationForm.save()
-        return redirect("todo")
+        return redirect("login")
     return render(request, "users/register.html", {"userCreationForm": userCreationForm})

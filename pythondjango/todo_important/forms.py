@@ -27,7 +27,6 @@ class CreateImportantTask(ModelForm):
             "important": CheckboxInput(
                 attrs={
                     "class": "d-none",
-                    "checked": True,
                 }
             )
         }

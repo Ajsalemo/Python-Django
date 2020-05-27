@@ -1,6 +1,8 @@
 """Database models"""
-from django.db.models import IntegerField, CharField, DateField, BooleanField, ForeignKey, CASCADE, Model
-from users.models import User
+from django.db.models import (
+    IntegerField, CharField, DateField, BooleanField, ForeignKey, CASCADE, Model
+)
+from django.contrib.auth.models import User
 
 
 class Task(Model):

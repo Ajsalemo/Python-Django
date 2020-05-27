@@ -2,8 +2,10 @@
 from datetime import date
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
 from todo.models import Task
 from todo.forms import DeleteTask
+
 
 from .forms import (
     CreateImportantTask,
@@ -18,18 +20,30 @@ from .forms import (
 @login_required
 def all_important_tasks(request):
     """This renders all important tasks in its own pane"""
+    # Retrieve the logged in user by ID
+    user = User.objects.filter(pk=request.user.id).first()
+    # Concatenate the first letter of the users 'first name' and 'last name'
+    # to create text that can overlay the user's avatar
+    first_name_char = request.user.first_name[0].capitalize()
+    last_name_char = request.user.last_name[0].capitalize()
+    first_and_last_initial = f"{first_name_char}{last_name_char}"
+
     todays_datetime_imp = date.today()
-    list_all_important_tasks = Task.objects.all()
+    list_all_important_tasks = Task.objects.filter(user=request.user, important="True").values(
+        "todo", "id", "completed", "important", "due_date")
     complete_important_task_form_true = CompleteImportantTask()
     complete_important_task_form_false = UncompleteImportantTask()
     set_task_importance_true = UpdateImportantTask()
     set_task_importance_false = DowngradeTaskFromImportant()
     add_important_task_due_date = AddDueDateTodoImportant()
-    find_important_task_count = Task.objects.filter(important="True").count()
+    find_important_task_count = Task.objects.filter(user=request.user, important="True").count()
     delete_imp_task_form = DeleteTask()
     create_important_task_form = CreateImportantTask(request.POST or None)
     if create_important_task_form.is_valid():
-        create_important_task_form.save()
+        created_important_todo = create_important_task_form.cleaned_data['todo']
+        add_todo_model = Task(
+            todo=created_important_todo, important=True, user=user)
+        add_todo_model.save()
         return redirect("todo_important_all")
     return render(request, "todo_important/todo_important.html",
                   {"list_all_important_tasks": list_all_important_tasks,
@@ -41,7 +55,8 @@ def all_important_tasks(request):
                    "add_important_task_due_date": add_important_task_due_date,
                    "delete_imp_task_form": delete_imp_task_form,
                    "find_important_task_count": find_important_task_count,
-                   "todays_datetime_imp": todays_datetime_imp})
+                   "todays_datetime_imp": todays_datetime_imp,
+                   "first_and_last_initial": first_and_last_initial})
 
 
 @login_required

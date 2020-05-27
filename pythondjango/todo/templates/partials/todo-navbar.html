@@ -9,7 +9,7 @@
     />
   </form>
   {% if user.is_authenticated %}
-  <div class="dropleft">
+  <div class="dropdown">
     <button
       class="rounded-circle todo-page-navbar-avatar d-flex flex-column justify-content-center text-center border-0"
       type="button"
@@ -20,10 +20,10 @@
       {{ first_and_last_initial }}
     </button>
     <div
-      class="dropdown-menu todo-page-dropdown-menu rounded-0"
-      aria-labelledby="dropdownMenu2"
+      class="dropdown-menu dropdown-menu-right todo-page-dropdown-menu rounded-0 text-center"
+      aria-labelledby="dropdownMenu"
     >
-      <span class="text-white">Log out</span>
+      <a class="text-white" href="{% url "logout" %}">Log out</a>
     </div>
   </div>
   {% endif %}

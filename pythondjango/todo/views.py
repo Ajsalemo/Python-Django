@@ -1,18 +1,24 @@
 """Views file for the 'todo' dashboard"""
 from datetime import date
+
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
+
+# from users.models import User
 
 from .forms import (AddDueDateTodo, CreateTask, DeleteTask,
                     DowngradeTaskImportance, EditTaskCompletion,
                     EditTaskCompletionFalse, UpdateTaskToImportant)
 from .models import Task
 
-
 @login_required
 def todo(request):
     """view for the general tasks dashboard"""
-
+    # Retrieve the logged in user by ID
+    print(request.user.id)
+    user = User.objects.filter().first()
+    print(user)
     # Concatenate the first letter of the users 'first name' and 'last name'
     # to create text that can overlay the user's avatar
     first_name_char = request.user.first_name[0].capitalize()
@@ -29,7 +35,7 @@ def todo(request):
     add_due_date_todo = AddDueDateTodo()
     delete_general_task = DeleteTask()
     find_important_task_count = Task.objects.filter(important="True").count()
-    create_task_form = CreateTask(request.POST or None)
+    create_task_form = CreateTask(request.POST, user or None)
     if create_task_form.is_valid():
         create_task_form.save()
         return redirect("todo")

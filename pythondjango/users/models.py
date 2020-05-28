@@ -7,7 +7,7 @@ class User(Model):
     id = IntegerField(primary_key=True)
     username = CharField(max_length=50, null=False, blank=False)
     first_name = CharField(max_length=50, null=False, blank=False)
-    last_name = CharField(max_length=50, null=False, blank=False)
+    last_name = CharField(max_length=100, null=False, blank=False)
     email = EmailField(max_length=50, null=False, blank=False)
     password = CharField(max_length=50, null=False, blank=False)
 

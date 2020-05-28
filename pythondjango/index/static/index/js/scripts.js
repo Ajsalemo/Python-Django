@@ -1,24 +1,35 @@
 // Element variables
+
+// Sidenav element ID's
 const mySideNav = document.getElementById("mySidenav");
 const sideNavContentOne = document.getElementById("sideNavContentOne");
 const sideNavContentTwo = document.getElementById("sideNavContentTwo");
-const taskButtonAdd = document.getElementById("task-button-add");
+
+// Create Task Form
 const createTaskForm = document.getElementById("create-task-form");
+// Create Task Form <span> elemement that populates an error message when validation fails
 const taskFormError = document.getElementById("task-form-error");
-const signUpTaskFormError = document.getElementById("signup-task-form-error");
-const signUpFormUsername = document.getElementById("id_username");
+
+// Create Important Task Form
 const createImportantTaskForm = document.getElementById(
   "create-important-task-form"
 );
+// Create Important Task Form <span> elemement that populates an error message when validation fails
 const createImportantTaskFormError = document.getElementById(
   "important-task-form-error"
 );
-const taskButtonImportantAdd = document.getElementById(
-  "task-button-important-add"
-);
-const taskButtonIcon = document.querySelector(
-  ".todo-page-add-task-form-submit-text"
-);
+
+// Login Form username field
+const logInFormUsername = document.getElementById("id_username");
+// Login Form password field
+const logInFormPassword = document.getElementById("id_password");
+// Login Form <span> elemement that populates an error message when validation fails
+const logInFormError = document.getElementById("login-alert");
+
+// Loading button span - this contains the interior text of the button
+const loadingButtonSpan = document.querySelector(".loading-button-span");
+// Loading button <button> element
+const loadingButton = document.querySelector(".loading-button");
 
 // Toggle option for a slide-out menu
 const openNav = () => {
@@ -52,28 +63,19 @@ const openNav = () => {
   }
 };
 
-// Show the loading spinner upon form submittal for normal Task Form
-const showLoadingSpinner = () => {
-  const taskButtonIcon = document.querySelector(
-    ".todo-page-add-task-form-submit-text"
-  );
-  taskButtonIcon.classList.add("spinner-border", "text-light");
-  taskButtonIcon.innerHTML = "";
-  taskButtonAdd.setAttribute("disabled", true);
-  taskButtonAdd.setAttribute("role", "status");
-  taskButtonAdd.setAttribute("aria-disabled", true);
+// Show the loading spinner for the Login form
+const showLoadingSpinner = event => {
+  loadingButtonSpan.classList.add("spinner-border", "text-light");
+  loadingButtonSpan.innerHTML = "";
+  loadingButton.setAttribute("disabled", true);
+  loadingButton.setAttribute("role", "status");
+  loadingButton.setAttribute("aria-disabled", true);
+
+  // This prevents additional clicks after the initial click to the anchor tag
+  event.onclick = e => e.preventDefault();
 };
 
-// Show the loading spinner for Important Task Form
-const showImportantLoadingSpinner = () => {
-  taskButtonIcon.classList.add("spinner-border", "text-light");
-  taskButtonIcon.innerHTML = "";
-  taskButtonImportantAdd.setAttribute("disabled", true);
-  taskButtonImportantAdd.setAttribute("role", "status");
-  taskButtonImportantAdd.setAttribute("aria-disabled", true);
-};
-
-// TODO - Need to see if it's possible to make this more DRY, since the forms are on two different pages
+// TODO - Need to see if it's possible to make this more DRY, since the forms are on different pages
 // This checks if the 'Task' form field is empty
 // If it's empty, set stylistic changes to indicate there is a validation error
 const validateTaskFormSubmit = () => {
@@ -97,8 +99,24 @@ const validateImportantTaskFormSubmit = () => {
     createImportantTaskForm.style.border = "1px solid red";
     return false;
   } else if (createImportantTaskForm.value !== "") {
-    showImportantLoadingSpinner();
+    showLoadingSpinner();
   }
   createImportantTaskFormError.innerHTML = "";
 };
 
+// Validation check for the login form
+const validateLogInForm = () => {
+  if (logInFormUsername.value === "") {
+    logInFormError.innerHTML = "You must enter a value";
+    logInFormError.style.color = "red";
+    logInFormUsername.style.border = "1px solid red";
+    return false;
+  } else if (logInFormPassword.value === "") {
+    logInFormError.innerHTML = "You must enter a value";
+    logInFormError.style.color = "red";
+    logInFormPassword.style.border = "1px solid red";
+    return false;
+  } else if (logInFormUsername.value !== "") {
+    showLoadingSpinner();
+  }
+};

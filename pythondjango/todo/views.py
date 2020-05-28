@@ -10,6 +10,7 @@ from .forms import (AddDueDateTodo, CreateTask, DeleteTask,
                     EditTaskCompletionFalse, UpdateTaskToImportant)
 from .models import Task
 
+
 @login_required
 def todo(request):
     """view for the general tasks dashboard"""
@@ -55,7 +56,7 @@ def todo(request):
 @login_required
 def update_completion_todo(request, pk):
     """This view is to update the added task - this marks it as complete or incomplete"""
-    
+
     update_completion = get_object_or_404(Task, pk=pk)
     update_completion_form_true = EditTaskCompletion(
         request.POST or None, instance=update_completion)

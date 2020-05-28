@@ -2,8 +2,8 @@
   <form class="form-inline todo-page-add-task-form" method="POST" onsubmit="return validateImportantTaskFormSubmit()">
     <div class="input-group mb-3 todo-page-add-task-form">
       <div class="input-group-prepend">
-        <button class="input-group-text todo-page-add-task-form-input border-0" type="submit" id="task-button-important-add">
-          <span class="todo-page-add-task-form-submit-text">+</span>
+        <button class="input-group-text todo-page-add-task-form-input border-0 loading-button" type="submit">
+          <span class="todo-page-add-task-form-submit-text loading-button-span">+</span>
         </button>
       </div>
       {{ create_important_task_form }}

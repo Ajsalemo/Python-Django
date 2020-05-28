@@ -11,11 +11,14 @@
   <div class="row">
     <div class="col text-center d-flex flex-column justify-content-center">
       {% include "./welcome.html" %}
-      <button type="button" class="btn btn-secondary btn mb-4">
-        <a href="{% url "login" %}" class="alert-link text-white">Login</a>
+        <a href="{% url "login" %}" class="alert-link text-white" onclick="showLoadingSpinner(this)">
+          <button type="button" class="btn btn-secondary btn mb-4 w-100 loading-button">
+            <span class="loading-button-span">Login</span>
+          </button>
+        </a>
       </button>
       <button type="button" class="btn btn-secondary btn">
-        <a href="{% url "register" %}" class="alert-link text-white">Register</a>
+        <a href="{% url "register" %}" class="alert-link text-white" id="main-page-signup-href">Register</a>
       </button>
     </div>
   </div>

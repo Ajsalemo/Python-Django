@@ -11,15 +11,12 @@
   <div class="row">
     <div class="col text-center d-flex flex-column justify-content-center">
       {% include "./welcome.html" %}
-        <a href="{% url "login" %}" class="alert-link text-white" onclick="showLoadingSpinner(this)">
-          <button type="button" class="btn btn-secondary btn mb-4 w-100 loading-button">
-            <span class="loading-button-span">Login</span>
-          </button>
+        <a href="{% url "login" %}" class="alert-link text-white" onclick="showLoadingSpinner(event)">
+          Login
         </a>
-      </button>
-      <button type="button" class="btn btn-secondary btn">
-        <a href="{% url "register" %}" class="alert-link text-white" id="main-page-signup-href">Register</a>
-      </button>
+        <a href="{% url "register" %}" class="alert-link text-white" onclick="showLoadingSpinner(event)">
+          Register
+        </a>
     </div>
   </div>
 </div>

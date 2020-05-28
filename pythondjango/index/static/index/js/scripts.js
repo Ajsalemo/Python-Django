@@ -64,15 +64,12 @@ const openNav = () => {
 };
 
 // Show the loading spinner for the Login form
-const showLoadingSpinner = event => {
-  loadingButtonSpan.classList.add("spinner-border", "text-light");
-  loadingButtonSpan.innerHTML = "";
-  loadingButton.setAttribute("disabled", true);
-  loadingButton.setAttribute("role", "status");
-  loadingButton.setAttribute("aria-disabled", true);
-
-  // This prevents additional clicks after the initial click to the anchor tag
-  event.onclick = e => e.preventDefault();
+const showLoadingSpinner = e => {
+  console.log(e);
+  e.target.setAttribute("role", "status");
+  e.target.setAttribute("aria-disabled", true);
+  e.target.classList.add("spinner-border", "text-light", "mx-auto");
+  e.target.innerHTML = "";
 };
 
 // TODO - Need to see if it's possible to make this more DRY, since the forms are on different pages

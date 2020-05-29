@@ -11,10 +11,10 @@
   <div class="row">
     <div class="col text-center d-flex flex-column justify-content-center">
       {% include "./welcome.html" %}
-        <a href="{% url "login" %}" class="alert-link text-white" onclick="showLoadingSpinner(event)">
+        <a href="{% url "login" %}" class="alert-link text-white mb-4 " onclick="nonFormLoadingSpinner(event)">
           Login
         </a>
-        <a href="{% url "register" %}" class="alert-link text-white" onclick="showLoadingSpinner(event)">
+        <a href="{% url "register" %}" class="alert-link text-white" onclick="nonFormLoadingSpinner(event)">
           Register
         </a>
     </div>

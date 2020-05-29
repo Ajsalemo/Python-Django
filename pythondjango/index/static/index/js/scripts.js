@@ -63,14 +63,23 @@ const openNav = () => {
   }
 };
 
-// Show the loading spinner for the Login form
-const showLoadingSpinner = e => {
-  console.log(e);
-  e.target.setAttribute("role", "status");
-  e.target.setAttribute("aria-disabled", true);
+// Show the loading spinner for the register and login links on the main page
+// This is also used to prevent multiple click events
+const nonFormLoadingSpinner = e => {
+  // Prevent default
+  e.target.onclick = e => e.preventDefault();
   e.target.classList.add("spinner-border", "text-light", "mx-auto");
   e.target.innerHTML = "";
 };
+
+// Loading spinner to be used on form buttons 
+const formSubmitLoadingSpinner = () => {
+  loadingButtonSpan.innerHTML = "";
+  loadingButtonSpan.classList.add("spinner-border", "text-light");
+  loadingButton.setAttribute("disabled", true);
+  loadingButton.setAttribute("aria-disabled", true);
+  loadingButton.setAttribute("role", "status");
+}
 
 // TODO - Need to see if it's possible to make this more DRY, since the forms are on different pages
 // This checks if the 'Task' form field is empty
@@ -82,7 +91,7 @@ const validateTaskFormSubmit = () => {
     createTaskForm.style.border = "1px solid red";
     return false;
   } else if (createTaskForm.value !== "") {
-    showLoadingSpinner();
+    formSubmitLoadingSpinner();
   }
   taskFormError.innerHTML = "";
 };
@@ -96,13 +105,13 @@ const validateImportantTaskFormSubmit = () => {
     createImportantTaskForm.style.border = "1px solid red";
     return false;
   } else if (createImportantTaskForm.value !== "") {
-    showLoadingSpinner();
+    formSubmitLoadingSpinner();
   }
   createImportantTaskFormError.innerHTML = "";
 };
 
 // Validation check for the login form
-const validateLogInForm = () => {
+const validateLogInForm = e => {
   if (logInFormUsername.value === "") {
     logInFormError.innerHTML = "You must enter a value";
     logInFormError.style.color = "red";
@@ -114,6 +123,6 @@ const validateLogInForm = () => {
     logInFormPassword.style.border = "1px solid red";
     return false;
   } else if (logInFormUsername.value !== "") {
-    showLoadingSpinner();
+    formSubmitLoadingSpinner();
   }
 };

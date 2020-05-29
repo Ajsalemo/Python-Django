@@ -7,21 +7,21 @@ from .models import User
 
 class UserCreateForm(UserCreationForm):
     """Form that creates a user"""
-    username = CharField(max_length=50, min_length=2, label="", widget=TextInput(attrs={
+    username = CharField(max_length=50, min_length=2, widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
         "placeholder": "Username",
     }))
 
-    first_name = CharField(max_length=50, min_length=2, label="", widget=TextInput(attrs={
+    first_name = CharField(max_length=50, min_length=2, widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
         "placeholder": "First Name",
     }))
 
-    last_name = CharField(max_length=50, min_length=2, label="", widget=TextInput(attrs={
+    last_name = CharField(max_length=50, min_length=2, widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
@@ -36,7 +36,7 @@ class UserCreateForm(UserCreationForm):
         "type": "email"
     }))
 
-    password1 = CharField(label="", max_length=50, min_length=6, widget=PasswordInput(attrs={
+    password1 = CharField(label="", max_length=50, min_length=8, widget=PasswordInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
@@ -44,7 +44,7 @@ class UserCreateForm(UserCreationForm):
         "type": "password"
     }))
 
-    password2 = CharField(label="", max_length=50, min_length=6, widget=PasswordInput(attrs={
+    password2 = CharField(label="", max_length=50, min_length=8, widget=PasswordInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
@@ -80,7 +80,7 @@ class UserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
-    username = CharField(widget=TextInput(
+    username = CharField(max_length=50, min_length=8, label="id_username", widget=TextInput(
         attrs={
             "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
@@ -88,7 +88,7 @@ class UserLoginForm(AuthenticationForm):
             "placeholder": "Username",
         }))
 
-    password = CharField(widget=PasswordInput(
+    password = CharField(max_length=50, min_length=8, label="id_password", widget=PasswordInput(
         attrs={
             "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4

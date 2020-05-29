@@ -9,7 +9,7 @@ def index(request):
     # If the user is already authenticated, then redirect them back to the main dashboard
     if request.user:
         return redirect("todo")
-
+        
     return render(request, "index/index.html", {
         "todays_date": todays_date
     })

@@ -17,7 +17,7 @@ class CreateTask(ModelForm):
             "todo": TextInput(
                 attrs={
                     "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
-                                border-top-0 border-right-0 border-left-0""",
+                                border-top-0 border-right-0 border-left-0 text-white""",
                     "type": "search",
                     "placeholder": "Add a task",
                     "id": "create-task-form"

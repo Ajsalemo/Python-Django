@@ -76,6 +76,10 @@ $todo-page-primary-text-color: #007bff;
       width: 32px;
       background-color: #fff;
     }
+
+    &-background {
+      background-color: #006bff;
+    }
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -250,6 +254,11 @@ $users-background-color: #000;
   // Main background
   &-background {
     background-color: $todo-page-background-color;
+  }
+
+  &-user-action-btn {
+    background-color: #0030ff;
+    border-color: #0030ff;
   }
 }
 

@@ -28,7 +28,7 @@ class UserCreateForm(UserCreationForm):
         "placeholder": "Last Name",
     }))
 
-    email = EmailField(label="", widget=TextInput(attrs={
+    email = EmailField(max_length=50, widget=TextInput(attrs={
         "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
@@ -41,7 +41,7 @@ class UserCreateForm(UserCreationForm):
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
         "placeholder": "Password",
-        "type": "password"
+        "type": "password",
     }))
 
     password2 = CharField(label="", max_length=50, min_length=8, widget=PasswordInput(attrs={
@@ -73,6 +73,11 @@ class UserCreateForm(UserCreationForm):
             user.save()
         return user
 
+    def __init__(self, *args, **kwargs): 
+        super(UserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].label = "Password"
+        self.fields['password2'].label = "Confirm Password"
+        self.fields['email'].label = "Email"
 
 class UserLoginForm(AuthenticationForm):
     """Custom User login form"""
@@ -80,7 +85,7 @@ class UserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
-    username = CharField(max_length=50, min_length=8, label="id_username", widget=TextInput(
+    username = CharField(max_length=50, min_length=8, widget=TextInput(
         attrs={
             "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4
@@ -88,7 +93,7 @@ class UserLoginForm(AuthenticationForm):
             "placeholder": "Username",
         }))
 
-    password = CharField(max_length=50, min_length=8, label="id_password", widget=PasswordInput(
+    password = CharField(max_length=50, min_length=8, widget=PasswordInput(
         attrs={
             "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
                                 border-top-0 border-right-0 border-left-0 mb-4

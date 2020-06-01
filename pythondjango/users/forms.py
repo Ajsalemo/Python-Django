@@ -73,7 +73,8 @@ class UserCreateForm(UserCreationForm):
             user.save()
         return user
 
-    def __init__(self, *args, **kwargs): 
+    # Create Labels for custom fields on the form
+    def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)
         self.fields['password1'].label = "Password"
         self.fields['password2'].label = "Confirm Password"

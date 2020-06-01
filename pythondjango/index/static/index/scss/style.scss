@@ -17,6 +17,7 @@ input::placeholder {
 label {
   color: transparent;
   height: 0;
+  width: 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,7 +97,7 @@ $todo-page-primary-text-color: #007bff;
     }
 
     &-anchor {
-      height: 1.1rem;
+      height: 2rem;
       &:hover {
         text-decoration: none;
       }
@@ -202,7 +203,6 @@ $todo-page-primary-text-color: #007bff;
     padding-right: 0 0.5rem 0 0;
     border: none;
     background-color: transparent;
-    color: white;
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

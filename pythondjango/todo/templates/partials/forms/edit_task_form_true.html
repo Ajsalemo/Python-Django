@@ -5,7 +5,6 @@
 >
   {{ edit_task_form }} 
   {% csrf_token %}
-  <button type="submit" class="todo-page-list-tasks-submit-btn text-primary" aria-label="Mark as complete">
-    <i class="far fa-circle"></i>
+  <button type="submit" class="todo-page-list-tasks-submit-btn text-primary far fa-circle" title="Mark as complete" onclick="checkboxSpinners(event)">
   </button>
 </form>

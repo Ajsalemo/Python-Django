@@ -81,6 +81,14 @@ const formSubmitLoadingSpinner = () => {
   loadingButton.setAttribute("role", "status");
 }
 
+// Loading spinner that replaces icons indicating a task update
+const checkboxSpinners = e => {
+  // Prevent default
+  e.target.onclick = e => e.preventDefault();
+  e.target.classList.remove("far", "fa-star");
+  e.target.classList.add("spinner-border", "fas", "fa-spinner");
+}
+
 // TODO - Need to see if it's possible to make this more DRY, since the forms are on different pages
 // This checks if the 'Task' form field is empty
 // If it's empty, set stylistic changes to indicate there is a validation error

@@ -16,12 +16,13 @@
       data-toggle="dropdown"
       aria-haspopup="true"
       aria-expanded="false"
+      aria-label="user dropdown menu"
     >
       {{ first_and_last_initial }}
     </button>
     <div
       class="dropdown-menu dropdown-menu-right todo-page-dropdown-menu rounded-0 text-center"
-      aria-labelledby="dropdownMenu"
+      aria-label="dropdown menu"
     >
       <a class="text-white" href="{% url "logout" %}">Log out</a>
     </div>

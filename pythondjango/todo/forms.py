@@ -10,9 +10,6 @@ class CreateTask(ModelForm):
     class Meta:
         model = Task
         fields = ("todo",)
-        labels = {
-            "todo": "",
-        }
         widgets = {
             "todo": TextInput(
                 attrs={

@@ -86,7 +86,7 @@ const checkboxSpinners = e => {
   // Prevent default
   e.target.onclick = e => e.preventDefault();
   e.target.classList.remove("far", "fa-star");
-  e.target.classList.add("spinner-border", "fas", "fa-spinner");
+  e.target.classList.add("spinner-border", "fas", "fa-spinner", "p-0");
 }
 
 // TODO - Need to see if it's possible to make this more DRY, since the forms are on different pages

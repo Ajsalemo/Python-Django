@@ -1,4 +1,4 @@
-<div class="dropleft">
+<div class="dropleft align-self-center">
   <button
     type="button"
     class="todo-page-list-tasks-submit-btn pl-4"
@@ -9,7 +9,10 @@
   >
     <i class="fas fa-ellipsis-v todo-page-sidenav-icons"></i>
   </button>
-  <div class="dropdown-menu todo-page-dropdown-menu rounded-0" aria-label="dropdown menu">
+  <div 
+    class="dropdown-menu todo-page-dropdown-menu rounded-0" 
+    aria-label="dropdown menu"
+  >
     {% include "../partials/forms/add_calendar_date.html" %}
     {% include "../partials/forms/delete_todo.html" %}
   </div>

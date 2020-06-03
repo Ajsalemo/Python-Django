@@ -139,3 +139,4 @@ class DeleteTask(ModelForm):
     class Meta:
         model = Task
         fields = []
+

@@ -3,7 +3,7 @@
 
 
 {% block todo %}
-  {% include "../partials/sub-appbar.html" %}
+  {% include "./sub-appbar.html" with header_text="Tasks" %}
   {% include "../partials/forms/add_task_form.html" %}
   {% include "../partials/list-tasks.html" %}
 {% endblock %}

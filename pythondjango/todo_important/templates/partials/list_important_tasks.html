@@ -8,7 +8,7 @@
                     {% include "../partials/forms/uncomplete_important_tasks.html" %}
                     <s>{{ important_task.todo }}</s>
                     <!-- If an important task has a due date, then display it under the task description -->
-                    {% include "../partials/display_important_due_date.html" %}
+                    {% include "todo/display_due_date.html" with task=important_task %}
                 </div>
             {% else %}
             <!-- If a task is not completed, do not strikethrough the text and show the uncompleted icon -->
@@ -16,7 +16,7 @@
                     {% include "../partials/forms/complete_important_task.html" %}
                     {{ important_task.todo }}
                     <!-- If an important task has a due date, then display it under the task description -->
-                    {% include "../partials/display_important_due_date.html" %}
+                    {% include "todo/display_due_date.html" with task=important_task %}
                 </div>
             {% endif %}
             <!-- Conditional to check whether a task is marked as important, depending if true/false - show the appropriate icon -->

@@ -3,7 +3,7 @@
 
 
 {% block todo %}
-  {% include "../partials/sub-task-bar.html" %}
+  {% include "todo/sub-appbar.html" with header_text="Important" %}
   {% include "../partials/forms/todo_important_create.html" %}
   {% include "../partials/list_important_tasks.html" %}
 {% endblock %}

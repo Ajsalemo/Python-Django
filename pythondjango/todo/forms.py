@@ -22,8 +22,6 @@ class CreateTask(ModelForm):
             )
         }
 
-        
-
 
 class EditTaskCompletion(ModelForm):
     """This is to edit the completion boolean field of a Task"""
@@ -139,4 +137,3 @@ class DeleteTask(ModelForm):
     class Meta:
         model = Task
         fields = []
-

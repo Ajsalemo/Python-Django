@@ -1,6 +1,6 @@
 """Forms for the User page"""
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.forms import CharField, EmailField, PasswordInput, TextInput
+from django.forms import CharField, PasswordInput, TextInput
 
 from .models import User
 
@@ -26,14 +26,6 @@ class UserCreateForm(UserCreationForm):
                                 border-top-0 border-right-0 border-left-0 mb-4
                                 text-white""",
         "placeholder": "Last Name",
-    }))
-
-    email = EmailField(max_length=50, widget=TextInput(attrs={
-        "class": """form-control rounded-0 mr-sm-2 todo-page-add-task-form-input
-                                border-top-0 border-right-0 border-left-0 mb-4
-                                text-white""",
-        "placeholder": "Email",
-        "type": "email"
     }))
 
     password1 = CharField(label="", max_length=50, min_length=8, widget=PasswordInput(attrs={
@@ -68,7 +60,6 @@ class UserCreateForm(UserCreationForm):
         user = super(UserCreateForm, self).save(commit=False)
         user.first_name = self.cleaned_data["first_name"]
         user.last_name = self.cleaned_data["last_name"]
-        user.email = self.cleaned_data["email"]
         if commit:
             user.save()
         return user
@@ -78,7 +69,6 @@ class UserCreateForm(UserCreationForm):
         super(UserCreationForm, self).__init__(*args, **kwargs)
         self.fields['password1'].label = "Password"
         self.fields['password2'].label = "Confirm Password"
-        self.fields['email'].label = "Email"
 
 class UserLoginForm(AuthenticationForm):
     """Custom User login form"""

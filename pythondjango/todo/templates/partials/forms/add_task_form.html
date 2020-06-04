@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar pl-0 pr-0">
   <form class="form-inline todo-page-add-task-form" method="POST" action="/todo/" onsubmit="return validateTaskFormSubmit()">
     <div class="input-group todo-page-add-task-form">
       <div class="input-group-prepend">
@@ -9,6 +9,6 @@
       {{ create_task_form }}
       {% csrf_token %}
     </div>
-    <span id="task-form-error"></span>
+    <span id="task-form-error" class="pl-3"></span>
   </form>
 </nav>

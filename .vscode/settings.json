@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\Owner\\.virtualenvs\\Python-Django-d5EWaioe\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\Owner\\.virtualenvs\\Python-Django-d5EWaioe\\Scripts\\python.exe",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true
 }

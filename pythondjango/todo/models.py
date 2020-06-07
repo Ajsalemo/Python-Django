@@ -13,6 +13,3 @@ class Task(Model):
     important = BooleanField(default=False, blank=True)
     completed = BooleanField(default=False, blank=True)
     user = ForeignKey(User, on_delete=CASCADE)
-
-    def __str__(self):
-        return f"Added the following: {self.todo}, {self.date}, {self.important}, {self.completed}, {self.important}"

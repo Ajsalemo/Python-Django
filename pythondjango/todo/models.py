@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 
 class Task(Model):
     """Task model"""
-    id = IntegerField(primary_key=True)
     todo = CharField(max_length=200, blank=True, null=False)
     date = DateField(null=True, blank=True)
     due_date = DateField(null=True, blank=True)

@@ -15,4 +15,6 @@ django-bootstrap-datepicker-plus
 django-compressor
 django-environ
 django-libsass
+psycopg2
+psycopg2-binary
 pylint-django

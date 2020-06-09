@@ -29,7 +29,6 @@ SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(env("DEBUG"))
-print(DEBUG)
 ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
 
 

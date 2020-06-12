@@ -134,5 +134,4 @@ dmypy.json
 
 # Static compiled CSS/SCSS/SASS
 /pythondjango/static_collected
-/pythondjango/static/CACHE/css
 

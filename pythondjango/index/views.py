@@ -2,7 +2,6 @@
 from datetime import date
 from django.shortcuts import render, redirect
 
-
 def index(request):
     """Show todays date in the navbar"""
     todays_date = date.today()
@@ -13,3 +12,8 @@ def index(request):
     return render(request, "index/index.html", {
         "todays_date": todays_date
     })
+
+
+def handler404(request, exception):
+    """Display a custom 404"""
+    return render(request, "index/404.html")

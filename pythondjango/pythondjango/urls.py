@@ -4,8 +4,6 @@ from django.urls import path, include
 from index.views import index
 from todo.views import todo
 
-# HTTP 404 Not Found handler
-handler404 = 'index.views.page_not_found'
 
 urlpatterns = [
     path("admin/", admin.site.urls),

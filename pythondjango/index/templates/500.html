@@ -1,10 +1,10 @@
 {% extends "errorbase.html" %} 
 
-{% block title %}Page Not Found{% endblock %} 
+{% block title %}Server error{% endblock %} 
 
 {% block error_code %}
-    404
+    500
 {% endblock %}
 {% block code_description %}
-    Page not found
+    A server error has occurred
 {% endblock %}

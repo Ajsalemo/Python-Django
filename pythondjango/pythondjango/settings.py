@@ -76,6 +76,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'pythondjango.wsgi.application'
 
 
@@ -158,4 +159,5 @@ STATICFILES_FINDERS = (
 
 
 LOGIN_REDIRECT_URL = "todo"
+LOGOUT_REDIRECT_URL = "index"
 LOGIN_URL = "login"

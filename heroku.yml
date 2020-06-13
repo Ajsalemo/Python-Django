@@ -4,7 +4,7 @@ setup:
         as: DATABASE
 build:
     docker:
-        web: Dockerfile
+        web: pythongjando/Dockerfile
         worker: worker/Dockerfile
 release:
     command:

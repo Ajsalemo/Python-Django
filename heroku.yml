@@ -5,7 +5,3 @@ setup:
 build:
     docker:
         web: /pythondjango/Dockerfile
-release:
-    command:
-        - ./deployment-tasks.sh
-    image: worker

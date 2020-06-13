@@ -4,8 +4,7 @@ setup:
         as: DATABASE
 build:
     docker:
-        web: pythondjango/Dockerfile
-        worker: worker/Dockerfile
+        web: /pythondjango/Dockerfile
 release:
     command:
         - ./deployment-tasks.sh

@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 def index(request):
     """Homepage view"""
     # If the user is already authenticated, then redirect them back to the main dashboard
-    if request.user:
+    if request.user.is_authenticated:
         return redirect("todo")
 
     return render(request, "index/index.html")

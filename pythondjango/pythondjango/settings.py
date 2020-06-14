@@ -147,7 +147,7 @@ COMPRESS_PRECOMPILERS = (
 
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static_collected"),
+    os.path.join(BASE_DIR, "pythondjango/static_collected"),
 )
 
 

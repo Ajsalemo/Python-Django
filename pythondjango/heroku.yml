@@ -1,5 +1,4 @@
 build:
-  context: pythondjango/
   docker:
     web: Dockerfile
 setup:

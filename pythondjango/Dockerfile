@@ -14,5 +14,8 @@ RUN pip install psycopg2
 COPY requirements.txt /pythondjango/requirements.txt
 RUN pip install -r requirements.txt
 
+# collect static files
+RUN python manage.py collectstatic --noinput
+
 # copy project
 COPY . /pythondjango/

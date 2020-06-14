@@ -6,7 +6,7 @@ setup:
     - plan: heroku-postgresql:hobby-dev
       as: DATABASE    
 run:
-  web: pythondjango/gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
+  web: pythondjango/gunicorn pythondjango.wsgi:application --bind 0.0.0.0:$PORT
 release:
   image: web
   command:

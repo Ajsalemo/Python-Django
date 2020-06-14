@@ -6,10 +6,10 @@ setup:
     - plan: heroku-postgresql:hobby-dev
       as: DATABASE
 run:
-  web: gunicorn pythondjango.wsgi:application --bind 0.0.0.0:$PORT
+  web: cd pythondjango && gunicorn pythondjango.wsgi:application --bind 0.0.0.0:$PORT
 release:
   image: web
   command:
-    - python manage.py collectstatic --noinput
+    -  cd pythondjango && python manage.py collectstatic --noinput
 
 

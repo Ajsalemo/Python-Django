@@ -109,7 +109,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-/pythondjango/pythondjango/.env
+/pythondjango/.env
 
 # Spyder project settings
 .spyderproject
@@ -130,8 +130,8 @@ dmypy.json
 .pyre/
 
 # Bootstrap source SCSS
-/pythondjango/index/static/index/bootstrap
+/index/static/index/bootstrap
 
 # Static compiled CSS/SCSS/SASS
-/pythondjango/static
-/pythondjango/static_collected
+/static
+/static_collected

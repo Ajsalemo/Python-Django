@@ -137,7 +137,7 @@ BOOTSTRAP4 = {
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/index/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 COMPRESS_PRECOMPILERS = (

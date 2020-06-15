@@ -11,6 +11,7 @@ ENV PYTHONUNBUFFERED 1
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install psycopg2
+RUN pip install whitenoise
 COPY requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 

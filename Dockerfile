@@ -20,4 +20,4 @@ COPY . /
 ## collect static files for Heroku deployment
 RUN mkdir /staticfiles
 
-RUN python manage.py --noinput
+RUN python manage.py collectstatic --noinput

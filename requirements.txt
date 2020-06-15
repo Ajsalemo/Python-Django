@@ -19,3 +19,5 @@ psycopg2
 psycopg2-binary
 pylint-django
 gunicorn
+whitenoise
+dj-database-url

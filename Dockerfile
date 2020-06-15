@@ -16,3 +16,8 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . /
+
+## collect static files for Heroku deployment
+RUN mkdir /staticfiles
+
+RUN python manage.py --noinput

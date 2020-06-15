@@ -2,7 +2,7 @@
 FROM python:3.7
 
 # set work directory
-WORKDIR /
+WORKDIR /pythondjango
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -15,7 +15,7 @@ COPY requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
 # copy project
-COPY . /
+COPY . /pythondjango
 
 ## collect static files for Heroku deployment
 RUN mkdir /staticfiles

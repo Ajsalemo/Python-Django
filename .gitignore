@@ -132,6 +132,3 @@ dmypy.json
 # Bootstrap source SCSS
 /index/static/index/bootstrap
 
-# Static compiled CSS/SCSS/SASS
-/static
-/static_collected

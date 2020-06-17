@@ -17,6 +17,7 @@ before_script:
   - export IMAGE=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
   - export WEB_IMAGE=$IMAGE:web
   - export NGINX_IMAGE=$IMAGE:nginx
+  - export POSTGRES_IMAGE=$IMAGE:postgres
 script:
   - apk add --no-cache bash
   - chmod +x ./setup_env.sh

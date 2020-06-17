@@ -130,6 +130,6 @@ dmypy.json
 .pyre/
 
 # Bootstrap source SCSS
-/index/static/index/bootstrap
+./index/static/index/bootstrap
 /static_collected/
 

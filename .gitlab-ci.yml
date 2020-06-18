@@ -29,7 +29,7 @@ build:
         # - docker pull $IMAGE:web || true
         # - docker pull $IMAGE:nginx || true
         - docker pull postgres
-        - docker tag postgres $NGINX_IMAGE
+        - docker tag postgres $POSTGRES_IMAGE
         - docker-compose -f docker-compose.ci.yml build
         - docker push $IMAGE:web
         - docker push $IMAGE:nginx

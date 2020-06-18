@@ -32,4 +32,4 @@ build:
         - docker-compose -f docker-compose.ci.yml build
         - docker push $IMAGE:web
         - docker push $IMAGE:nginx
-        - docker push postgres
+        - docker push $IMAGE:postgres

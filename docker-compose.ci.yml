@@ -26,7 +26,7 @@ services:
       - db
 
   db:
-    image: ${POSTGRES_IMAGE}
+    image: "${POSTGRES_IMAGE}""
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:

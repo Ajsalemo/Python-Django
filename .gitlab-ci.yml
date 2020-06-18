@@ -4,6 +4,7 @@ image:
     
 services:
    - docker:dind
+   - postgres:latest
     
 stages:
    - build

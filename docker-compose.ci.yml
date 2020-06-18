@@ -2,7 +2,12 @@ version: '3.7'
 
 services:
   web:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      cache_from:
+        - "${WEB_IMAGE}"
+    image: "${WEB_IMAGE}"
     command: gunicorn pythondjango.wsgi:application --bind 0.0.0.0:8000
     volumes: 
       - static_volume:/static
@@ -25,10 +30,13 @@ services:
       - pythondjango/.env
 
   nginx:
-    restart: always
-    build: ./nginx
+    build:
+      context: ./nginx
+      cache_from:
+        - "${NGINX_IMAGE}"
+    image: "${NGINX_IMAGE}"
     ports:
-      - "8080:8080"
+      - "80:80"
     volumes: 
       - static_volume:/static
     depends_on: 

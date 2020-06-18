@@ -28,7 +28,7 @@ build:
     script:
         # - docker pull $IMAGE:web || true
         # - docker pull $IMAGE:nginx || true
-        # - docker pull $IMAGE:postgres || true
+        - docker pull postgres
         - docker-compose -f docker-compose.ci.yml build
         - docker push $IMAGE:web
         - docker push $IMAGE:nginx

@@ -4,7 +4,6 @@ image:
     
 services:
    - docker:dind
-   - postgres:latest
     
 stages:
    - build
@@ -33,4 +32,4 @@ build:
         - docker-compose -f docker-compose.ci.yml build
         - docker push $IMAGE:web
         - docker push $IMAGE:nginx
-        - docker push $IMAGE:postgres
+        - docker push postgres

@@ -26,11 +26,24 @@ before_script:
 build:
     stage: build
     script:
-        # - docker pull $IMAGE:web || true
-        # - docker pull $IMAGE:nginx || true
         - docker pull postgres
         - docker tag postgres $POSTGRES_IMAGE
         - docker-compose -f docker-compose.ci.yml build
         - docker push $IMAGE:web
         - docker push $IMAGE:nginx
         - docker push $IMAGE:postgres
+
+
+deploy:
+    stage: deploy
+    script:
+        - mkdir -p ~/.ssh
+        - echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+        - cat ~/.ssh/id_rsa
+        - chmod 700 ~/.ssh/id_rsa
+        - eval "$(ssh-agent -s)"
+        - ssh-add ~/.ssh/id_rsa
+        - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
+        - chmod +x ./deploy.sh
+        - scp  -o StrictHostKeyChecking=no -r ./.env ./docker-compose.prod.yml root@$DIGITAL_OCEAN_IP_ADDRESS:/app
+        - bash ./deploy.sh

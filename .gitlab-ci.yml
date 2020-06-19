@@ -38,13 +38,13 @@ build:
 deploy:
     stage: deploy
     script:
-        - mkdir -p ~/.ssh
-        - echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-        - cat ~/.ssh/id_rsa
-        - chmod 700 ~/.ssh/id_rsa
-        - eval "$(ssh-agent -s)"
-        - ssh-add ~/.ssh/id_rsa
-        - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
+        # - mkdir -p ~/.ssh
+        # - echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+        # - cat ~/.ssh/id_rsa
+        # - chmod 700 ~/.ssh/id_rsa
+        # - eval "$(ssh-agent -s)"
+        # - ssh-add ~/.ssh/id_rsa
+        # - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
         - chmod +x ./deploy.sh
         - scp  -o StrictHostKeyChecking=no -r pythondjango/./.env ./docker-compose.prod.yml root@$DIGITAL_OCEAN_IP_ADDRESS:/
         - bash ./deploy.sh

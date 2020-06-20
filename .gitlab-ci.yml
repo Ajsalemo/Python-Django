@@ -46,5 +46,5 @@ deploy:
         - ssh-add ~/.ssh/id_rsa
         - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
         - chmod +x ./deploy.sh
-        - scp  -o StrictHostKeyChecking=no -r pythondjango/./.env ./docker-compose.prod.yml root@$DIGITAL_OCEAN_IP_ADDRESS:/pythondjango
+        - scp -o StrictHostKeyChecking=no -r pythondjango/./.env ./docker-compose.prod.yml root@$DIGITAL_OCEAN_IP_ADDRESS:/pythondjango
         - bash ./deploy.sh

@@ -5,6 +5,8 @@ echo SQL_ENGINE=django.db.backends.postgresql >> .env
 echo DATABASE=postgres >> .env
 
 echo SECRET_KEY=')=sfsovy&@*+qdl^0*@yz9zm&x1_z%o*h@%-_%to$su!ob3*w-' >> .env
+echo DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1] 174.138.52.28
+echo DB_ENGINE=django.db.backends.postgresql_psycopg2
 echo DB_NAME=todo_db >> .env
 echo DB_USER=ajsalemo >> .env
 echo DB_PASSWORD=Dudebug1992 >> .env

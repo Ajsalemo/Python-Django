@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    build: .
+    image: ${WEB_IMAGE}
     command: gunicorn pythondjango.wsgi:application --bind 0.0.0.0:8000
     volumes: 
       - static_volume:/static
@@ -31,7 +31,7 @@ services:
 
   nginx:
     restart: always
-    build: ./nginx
+    build: ${NGINX_IMAGE}
     ports:
       - "8080:8080"
     volumes: 

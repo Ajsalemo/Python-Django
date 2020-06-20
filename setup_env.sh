@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo DEBUG=0 >> .env
 echo SQL_ENGINE=django.db.backends.postgresql >> .env
@@ -12,7 +12,7 @@ echo DB_HOST=$DB_HOST >> .env
 echo DB_PORT=$DB_PORT >> .env
 echo POSTGRES_USER=$POSTGRES_USER >> .env
 echo POSTGRES_PASSWORD=$POSTGRES_PASSWORD >> .env
-ech POSTGRES_DB=$POSTGRES_DB >> .env
+echo POSTGRES_DB=$POSTGRES_DB >> .env
 echo WEB_IMAGE=$IMAGE:web  >> .env
 echo NGINX_IMAGE=$IMAGE:nginx  >> .env
 echo POSTGRES_IMAGE=$IMAGE:postgres  >> .env

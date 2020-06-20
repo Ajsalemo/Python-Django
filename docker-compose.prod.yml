@@ -31,7 +31,7 @@ services:
 
   nginx:
     restart: always
-    build: ${NGINX_IMAGE}
+    image: ${NGINX_IMAGE}
     ports:
       - "8080:8080"
     volumes: 

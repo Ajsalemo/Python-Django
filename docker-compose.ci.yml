@@ -41,7 +41,7 @@ services:
         - "${NGINX_IMAGE}"
     image: "${NGINX_IMAGE}"
     ports:
-      - "80:80"
+      - 80:80
     volumes: 
       - static_volume:/static
     depends_on: 

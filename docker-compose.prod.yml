@@ -3,7 +3,7 @@ version: '3.7'
 services:
   web:
     image: ${WEB_IMAGE}
-    command: gunicorn pythondjango.wsgi:application --bind 174.138.52.28:8000
+    command: gunicorn pythondjango.wsgi:application --bind 0.0.0.0:8000
     volumes: 
       - static_volume:/static
     expose: 
@@ -33,7 +33,7 @@ services:
     restart: always
     image: ${NGINX_IMAGE}
     ports:
-      - "8080:8080"
+      - 80:80
     volumes: 
       - static_volume:/static
     depends_on: 

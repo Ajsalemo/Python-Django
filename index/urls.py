@@ -11,3 +11,6 @@ handler502 = "index.views.handler502"
 
 # HTTP 503 Service unavailable handler
 handler503 = "index.views.handler503"
+
+# HTTP 504 Gateway time-out
+handler504 = "index.views.handler504"

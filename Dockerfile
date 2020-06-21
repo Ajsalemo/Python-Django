@@ -8,6 +8,13 @@ WORKDIR /
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# create a static directory for nginx
+ENV HOME=/
+ENV APP_HOME=/static
+RUN mkdir $APP_HOME
+RUN mkdir $APP_HOME/static
+WORKDIR $APP_HOME
+
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install psycopg2

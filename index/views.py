@@ -38,3 +38,9 @@ def handler503(request, exception):
         "exception": exception
     })
     
+
+def handler504(request, exception):
+    """Display a custom 504"""
+    return render(request, "index/504.html", {
+        "exception": exception
+    })

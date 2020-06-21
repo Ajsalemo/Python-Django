@@ -4,8 +4,8 @@ echo DEBUG=0 >> .env
 echo DATABASE=postgres >> .env
 
 echo SECRET_KEY=$SECRET_KEY >> .env
-echo DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS
-echo DB_ENGINE=$DB_ENGINE
+echo DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS >> .env
+echo DB_ENGINE=$DB_ENGINE >> .env
 echo DB_NAME=$DB_NAME >> .env
 echo DB_USER=$DB_USER >> .env
 echo DB_PASSWORD=$DB_PASSWORD >> .env

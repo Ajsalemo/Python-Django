@@ -23,5 +23,5 @@ RUN pip install -r requirements.txt
 COPY . /
 
 # collect static files
-RUN python manage.py collectstatic --noinput
+RUN /bin/bash -c "python manage.py collectstatic --noinput"
 

@@ -22,6 +22,4 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . /
 
-# collect static files
-RUN bash -c "python manage.py collectstatic --no-input --clear"
 

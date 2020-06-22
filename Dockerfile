@@ -13,9 +13,6 @@ ENV HOME=/
 RUN mkdir /static
 WORKDIR $HOME
 
-# collect static files
-RUN /bin/bash -c "python manage.py collectstatic --noinput"
-
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install psycopg2
@@ -25,4 +22,6 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . /
 
+# collect static files
+RUN bash -c "docker-compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input --clear"
 

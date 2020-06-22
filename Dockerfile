@@ -10,8 +10,8 @@ ENV PYTHONUNBUFFERED 1
 
 # create the static file directories
 ENV HOME=/
-RUN mkdir $HOME/static
-WORKDIR /
+RUN mkdir /static
+WORKDIR $HOME
 
 # install dependencies
 RUN pip install --upgrade pip

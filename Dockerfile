@@ -23,5 +23,5 @@ RUN pip install -r requirements.txt
 COPY . /
 
 # collect static files
-RUN bash -c "docker-compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input --clear"
+RUN bash -c "python manage.py collectstatic --no-input --clear"
 

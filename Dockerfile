@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 
 # create the static file directories
 ENV HOME=/
-RUN mkdir /static
+RUN mkdir /static_collected
 WORKDIR $HOME
 
 # install dependencies

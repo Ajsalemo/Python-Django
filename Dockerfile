@@ -8,6 +8,11 @@ WORKDIR /
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# create the static file directories
+ENV HOME=/
+RUN mkdir $HOME/static
+WORKDIR /
+
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install psycopg2
@@ -16,4 +21,7 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . /
+
+# collect static files
+RUN python manage.py collectstatic --noinput
 

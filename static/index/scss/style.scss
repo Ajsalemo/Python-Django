@@ -260,8 +260,8 @@ $users-background-color: #000;
   &-background {
     background-color: $todo-page-background-color;
     @media (min-width: $lrg-breakpoints) { 
-      height: -webkit-fill-available;
-      height: -moz-available;   
+      height: "-webkit-fill-available";
+      height: "-moz-available";   
     }
   }
 

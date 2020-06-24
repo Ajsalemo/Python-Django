@@ -8,7 +8,7 @@
     <div class="alert alert-{{ message.tags }} mx-auto rounded-0">{{ message }}</div>
   {% endfor %} {% endif %}
   <span id="login-alert"></span>
-  <form method="POST" class="d-flex flex-column text-white pb-3 vh-100" onsubmit="return validateLogInForm()">
+  <form method="POST" class="d-flex flex-column text-white pb-3 pt-5 vh-100" onsubmit="return validateLogInForm()">
     {{ form }}
     {% csrf_token %}
     <button type="submit" class="mt-4 btn users-user-action-btn text-white w-25 mx-auto rounded-0 loading-button">

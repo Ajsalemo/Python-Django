@@ -258,10 +258,8 @@ $users-background-color: #000;
   // Main background
   &-background {
     background-color: $todo-page-background-color;
-    height: initial;
     @media (min-width: 992px) { 
       height: -webkit-fill-available;
-      height: -moz-available;   
     }
   }
 

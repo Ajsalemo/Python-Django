@@ -23,7 +23,6 @@ label {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $phone-breakpoints: 450px;
-$lrg-breakpoints: 992px;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // To-do page styles
@@ -259,9 +258,9 @@ $users-background-color: #000;
   // Main background
   &-background {
     background-color: $todo-page-background-color;
-    @media (min-width: $lrg-breakpoints) { 
-      height: "-webkit-fill-available";
-      height: "-moz-available";   
+    @media (min-width: 992px) { 
+      height: -webkit-fill-available;
+      height: -moz-available;   
     }
   }
 

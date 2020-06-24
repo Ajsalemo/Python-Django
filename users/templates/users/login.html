@@ -3,18 +3,18 @@
 
 
 {% block users %}
-<div class="col-lg-6 mx-auto vh-100">
+<div class="col-lg-6 mx-auto">
   {% if messages %} {% for message in messages %}
     <div class="alert alert-{{ message.tags }} mx-auto rounded-0">{{ message }}</div>
   {% endfor %} {% endif %}
   <span id="login-alert"></span>
-  <form method="POST" class="d-flex flex-column text-white pb-3" onsubmit="return validateLogInForm()">
+  <form method="POST" class="d-flex flex-column text-white pb-3 vh-100" onsubmit="return validateLogInForm()">
     {{ form }}
     {% csrf_token %}
     <button type="submit" class="mt-4 btn users-user-action-btn text-white w-25 mx-auto rounded-0 loading-button">
       <span class="loading-button-span">Log in</span>
     </button>
+    <span class="text-white">Need an account? <a href="{% url "register" %}">Sign up</a></span>
   </form>
-  <span class="text-white">Need an account? <a href="{% url "register" %}">Sign up</a></span>
 </div>
 {% endblock %}

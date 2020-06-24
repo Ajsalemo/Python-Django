@@ -258,9 +258,6 @@ $users-background-color: #000;
   // Main background
   &-background {
     background-color: $todo-page-background-color;
-    @media (min-width: 992px) { 
-      height: -webkit-fill-available;
-    }
   }
 
   &-user-action-btn {

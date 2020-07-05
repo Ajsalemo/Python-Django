@@ -1,6 +1,8 @@
 # Python-Django
 An application using Python to test out the Django framework.
 
+![Imgur](https://i.imgur.com/wDit6ku.png)
+
 ## Login and Sign up
 To access the application, sign up by creating an account, afterwards you'll be able to log in
 
